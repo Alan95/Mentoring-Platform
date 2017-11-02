@@ -8,6 +8,7 @@ npm install
 
 npm run dev 
 
-Local Development Server:
+Development:
 
-php artisan serve
+php artisan serve & npm run watch
+
