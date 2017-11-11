@@ -7,7 +7,7 @@ Vue 2 JS
 mySQL
 Socket.io
 
-Install:
+# Install:
 
 composer global require "laravel/installer"
 
@@ -15,7 +15,7 @@ npm install
 
 npm run dev 
 
-Development:
+# Development:
 
 php artisan serve & npm run watch
 
