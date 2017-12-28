@@ -1,4 +1,4 @@
 @extends('layout')
 @section('content')
-    <home></home>
+    <register></register>
 @endsection        

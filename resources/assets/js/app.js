@@ -8,6 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueParticles from 'vue-particles'
+Vue.use(VueParticles)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -16,7 +18,9 @@ window.Vue = require('vue');
  */
 
 Vue.component('home', require('./components/Home.vue'));
+Vue.component('register', require('./components/Register.vue'));
 
 const app = new Vue({
     el: '#app'
 });
+
