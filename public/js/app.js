@@ -46429,6 +46429,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -46452,8 +46465,60 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "jumbotron" }, [
-        _c("h1", { staticClass: "text-center" }, [_vm._v("Register")])
+      _c("div", { staticClass: "form_wrapper" }, [
+        _c("form", [
+          _c("input", {
+            staticClass: "form-control-plaintext",
+            attrs: {
+              type: "text",
+              id: "staticEmail",
+              placeholder: "Email or username"
+            }
+          }),
+          _vm._v(" "),
+          _c("span", [
+            _c("i", {
+              staticClass: "fa fa-envelope-open-o icon_right",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("hr", { staticClass: "horisontal_line" }),
+          _vm._v(" "),
+          _c("input", {
+            staticClass: "form-control-plaintext",
+            attrs: {
+              type: "password",
+              id: "inputPassword",
+              placeholder: "Password"
+            }
+          }),
+          _vm._v(" "),
+          _c("i", {
+            staticClass: "fa fa-key icon_right",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" "),
+          _c("hr", { staticClass: "horisontal_line" }),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-light btn-block sign_up",
+              attrs: { href: "/register" }
+            },
+            [_vm._v("Sign up")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "register_text" }, [
+          _vm._v("Do you already have an account?"),
+          _c("br"),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "/register" } }, [
+            _c("span", { staticClass: "login_label" }, [_vm._v("Login here")])
+          ])
+        ])
       ])
     ])
   }

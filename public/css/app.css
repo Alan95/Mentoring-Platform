@@ -9718,7 +9718,12 @@ a.text-dark:hover {
 }
 
 body {
+  margin: 0;
   background-color: #64009b;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#ac4ddf), color-stop(#642d85), to(#d884b5));
+  background-image: linear-gradient(to bottom right, #ac4ddf, #642d85, #d884b5);
+  border: 1px solid black;
+  height: 100%;
 }
 
 .btn-violet {
@@ -9732,6 +9737,7 @@ body {
   margin-top: 200px;
   color: white;
   text-transform: uppercase;
+  margin-bottom: 200px;
 }
 
 .main-title {
@@ -9746,5 +9752,86 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+.form_wrapper {
+  background-color: #411849;
+  padding: 20px 10px 10px 10px;
+  width: 40%;
+  height: 55%;
+  color: white;
+  overflow: auto;
+  -webkit-box-shadow: 5px 10px 18px #888888;
+          box-shadow: 5px 10px 18px #888888;
+  opacity: 0.8;
+  filter: alpha(opacity=50);
+  /* For IE8 and earlier */
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+}
+
+.horisontal_line {
+  padding: 0px;
+  margin: 0px 20px 0px 20px;
+  background-color: white;
+}
+
+input {
+  margin: 25px 20px 0px 20px;
+}
+
+input::-webkit-input-placeholder {
+  color: white;
+}
+
+input:-ms-input-placeholder {
+  color: white;
+}
+
+input::-ms-input-placeholder {
+  color: white;
+}
+
+input::placeholder {
+  color: white;
+}
+
+.icon_right {
+  float: right;
+  margin-top: 35px;
+  margin-right: 35px;
+}
+
+.register_text {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.sign_up {
+  -ms-flex-line-pack: center;
+      align-content: center;
+  margin: 50px 20px 20px 20px;
+  color: #411849;
+}
+
+.btn-block {
+  width: 92%;
+}
+
+.login_label {
+  color: #B9287D;
+  margin-bottom: 50em;
+}
+
+.page_title {
+  margin-top: 5%;
+  color: white;
+  font-weight: bold;
+  text-align: center;
 }
 

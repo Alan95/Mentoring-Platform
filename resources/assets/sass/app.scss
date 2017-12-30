@@ -8,12 +8,24 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+$background_color:  #64009b;
+$background_complementary:  #B9287D;
+$title_color: white;
+$form_wrapper_color: rgb(65, 24, 73);
+
+
 body{
-    background-color: #64009b;
+    margin:0;
+    background-color: $background_color;
+    background-image: linear-gradient(to bottom right, #ac4ddf, rgb(100, 45, 133), rgb(216, 132, 181));
+    //background-repeat: no-repeat;
+    border: 1px solid black;
+    height: 100%;
+   
 }
 
 .btn-violet {
-    background-color: #64009b;
+    background-color: $background_color;
     border: 1px solid white;
     color: white !important;
 }
@@ -21,8 +33,9 @@ body{
 .titlebox{
     z-index: 999;
     margin-top: 200px;
-    color: white;
+    color: $title_color;
     text-transform: uppercase;
+    margin-bottom: 200px;
 }
 
 .main-title {
@@ -38,3 +51,73 @@ body{
     height: 100%;
     z-index: -1;
 }
+
+.form_wrapper{
+    background-color: $form_wrapper_color;
+    padding: 20px 10px 10px 10px;
+    width: 40%;
+    height: 55%;
+    color: $title_color;
+    overflow:auto;
+    box-shadow: 5px 10px 18px #888888;
+    opacity: 0.8;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    
+    
+}
+
+.horisontal_line{
+    padding: 0px;
+    margin: 0px 20px 0px 20px;
+    background-color: $title_color;
+}
+
+input {
+    margin: 25px 20px 0px 20px ;
+    
+}
+
+input::placeholder {
+    color: $title_color;
+}
+
+.icon_right{
+    float: right;
+    margin-top: 35px;
+    margin-right: 35px;
+}
+
+.register_text{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.sign_up{
+    align-content: center;
+    margin: 50px 20px 20px 20px;
+    color: $form_wrapper_color;
+}
+
+.btn-block{
+    width: 92%;
+}
+
+.login_label{
+    color: $background_complementary;
+    margin-bottom: 50em;
+}
+
+.page_title{
+    margin-top: 5%;
+    color: $title_color;
+    font-weight: bold;
+    text-align: center;
+}
+
