@@ -16,12 +16,8 @@ $form_wrapper_color: rgb(65, 24, 73);
 
 body{
     margin:0;
-    background-color: $background_color;
     background-image: linear-gradient(to bottom right, #ac4ddf, rgb(100, 45, 133), rgb(216, 132, 181));
-    //background-repeat: no-repeat;
-    border: 1px solid black;
-    height: 100%;
-   
+    background-repeat: no-repeat;
 }
 
 .btn-violet {
@@ -43,6 +39,7 @@ body{
 }
 
 .particles{
+    background-image: linear-gradient(to bottom right, #ac4ddf, rgb(100, 45, 133), rgb(216, 132, 181));
     background-size: cover;
     position: absolute;
     top: 0;
@@ -55,22 +52,13 @@ body{
 .form_wrapper{
     background-color: $form_wrapper_color;
     padding: 20px 10px 10px 10px;
-    width: 40%;
-    height: 55%;
+    max-width: 40%;
+    max-height: 55%;
     color: $title_color;
-    overflow:auto;
     box-shadow: 5px 10px 18px #888888;
     opacity: 0.8;
     filter: alpha(opacity=50); /* For IE8 and earlier */
-    position: absolute;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: auto;
-    
-    
+    margin: 20% auto;
 }
 
 .horisontal_line{
