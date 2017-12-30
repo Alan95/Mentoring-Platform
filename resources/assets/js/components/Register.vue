@@ -5,13 +5,25 @@
             </div>
             <div class="form_wrapper">
                 <form>
-                    <input type="text" class="form-control-plaintext" id="staticEmail" placeholder="Email or username">    
-                    <span><i class="fa fa-envelope-open-o icon_right" aria-hidden="true"></i></span>  
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control-plaintext" id="inputEmail" placeholder="Email or username">
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-envelope-open-o icon_right" aria-hidden="true"></i>
+                        </div>
+                    </div>
                     <hr class="horisontal_line">
-                    <input type="password" class="form-control-plaintext" id="inputPassword" placeholder="Password">
-                    <i class="fa fa-key icon_right" aria-hidden="true"></i>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <input type="password" class="form-control-plaintext" id="inputPassword" placeholder="Password">
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fa fa-key icon_right" aria-hidden="true"></i>
+                        </div>
+                    </div>
                     <hr class="horisontal_line"> 
-                    <a class="btn btn-light btn-block sign_up" href="/register">Sign up</a>         
+                    <a class="btn btn-light btn-block sign_up" href="/register">Sign up</a>                                              
                 </form>
                 <p class="register_text">Do you already have an account?<br>
                 <a href="/register"><span class="login_label">Login here</span></a></p>

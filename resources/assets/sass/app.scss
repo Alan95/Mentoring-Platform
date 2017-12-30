@@ -12,11 +12,14 @@ $background_color:  #64009b;
 $background_complementary:  #B9287D;
 $title_color: white;
 $form_wrapper_color: rgb(65, 24, 73);
-
+$box_shadow_color: #888888;
+$linear_gradient_color1: #ac4ddf;
+$linear_gradient_color2:rgb(100, 45, 133);
+$linear_gradient_color3:rgb(216, 132, 181);
 
 body{
     margin:0;
-    background-image: linear-gradient(to bottom right, #ac4ddf, rgb(100, 45, 133), rgb(216, 132, 181));
+    background-image: linear-gradient(to bottom right, $linear_gradient_color1 , $linear_gradient_color2 , $linear_gradient_color3);
     background-repeat: no-repeat;
 }
 
@@ -39,7 +42,7 @@ body{
 }
 
 .particles{
-    background-image: linear-gradient(to bottom right, #ac4ddf, rgb(100, 45, 133), rgb(216, 132, 181));
+    background-image: linear-gradient(to bottom right, $linear_gradient_color1, $linear_gradient_color2, $linear_gradient_color3);
     background-size: cover;
     position: absolute;
     top: 0;
@@ -55,10 +58,10 @@ body{
     max-width: 40%;
     max-height: 55%;
     color: $title_color;
-    box-shadow: 5px 10px 18px #888888;
+    box-shadow: 5px 10px 18px $box_shadow-color;
     opacity: 0.8;
     filter: alpha(opacity=50); /* For IE8 and earlier */
-    margin: 20% auto;
+    margin: 8% auto;
 }
 
 .horisontal_line{
