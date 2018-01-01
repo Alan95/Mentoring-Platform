@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+use App\Http\Requests;
+
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -67,5 +70,27 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function getForm(){
+        return view('register');
+    }
+
+    public function postForm(Request $request){
+        $email = $request->inputEmail;
+        $registerType = $request->registerType;
+        $password = $request->inputPassword;
+
+        //grabbing the hidden token g-recaptcha sends, if the checkbox was clicked!
+        $token = $request->input('g-recaptcha-response');
+        
+        if($token){
+            //token was submitted
+            return view('profile')->withRegisterType($registerType)->withEmail($email);
+        }else{
+            return redirect('/');
+        }
+
+        
     }
 }

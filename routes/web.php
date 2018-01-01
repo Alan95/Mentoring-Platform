@@ -18,3 +18,10 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 });
+
+Route::get('/profile', function () {
+  return view('profile');
+});
+
+Route::get('/register', 'Auth\RegisterController@getForm');
+Route::post('/profile', 'Auth\RegisterController@postForm');
