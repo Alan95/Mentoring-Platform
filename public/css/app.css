@@ -9847,44 +9847,21 @@ a.text-dark:hover {
     page-break-inside: avoid;
   }
 
-<<<<<<< HEAD
   thead {
     display: table-header-group;
   }
-=======
-.form_wrapper {
-  background-color: #411849;
-  padding: 20px 10px 10px 10px;
-  max-width: 40%;
-  max-height: 55%;
-  color: white;
-  -webkit-box-shadow: 5px 10px 18px #888888;
-          box-shadow: 5px 10px 18px #888888;
-  opacity: 0.8;
-  filter: alpha(opacity=80);
-  /* For IE8 and earlier */
-  margin: 8% auto;
-}
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
   tr,
   img {
     page-break-inside: avoid;
   }
 
-<<<<<<< HEAD
   p,
   h2,
   h3 {
     orphans: 3;
     widows: 3;
   }
-=======
-input[type="text"],
-input[type='password'] {
-  margin: 25px 20px 0px 20px;
-}
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
   h2,
   h3 {
@@ -13024,7 +13001,7 @@ body {
   -webkit-box-shadow: 5px 10px 18px #888888;
           box-shadow: 5px 10px 18px #888888;
   opacity: 0.8;
-  filter: alpha(opacity=50);
+  filter: alpha(opacity=80);
   /* For IE8 and earlier */
   margin: 8% auto;
 }
@@ -13035,7 +13012,8 @@ body {
   background-color: white;
 }
 
-input {
+input[type="text"],
+input[type='password'] {
   margin: 25px 20px 0px 20px;
 }
 
@@ -13093,6 +13071,8 @@ input::placeholder {
   -webkit-transform: translateX(10px);
           transform: translateX(10px);
   opacity: 0;
+}
+
 .g-recaptcha {
   width: 10em;
   height: 3em;
@@ -13115,5 +13095,11 @@ input::placeholder {
   width: 90%;
   margin-left: 5%;
   margin-top: 30px;
+}
+
+.fa-arrow-left {
+  font-size: 3rem;
+  text-decoration: none;
+  color: white;
 }
 

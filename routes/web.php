@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,13 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/register', 'Auth\RegisterController@showRegisterPage');
+Route::post('/register', 'Auth\RegisterController@store');
 
-Route::get('/profile', function () {
-  return view('profile');
-});
 
-Route::get('/register', 'Auth\RegisterController@getForm');
-Route::post('/profile', 'Auth\RegisterController@postForm');
+Route::get('/profile', 'ProfileController@showProfilePage');
+
+

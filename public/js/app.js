@@ -70,12 +70,8 @@
 "use strict";
 
 
-var bind = __webpack_require__(5);
-<<<<<<< HEAD
+var bind = __webpack_require__(6);
 var isBuffer = __webpack_require__(21);
-=======
-var isBuffer = __webpack_require__(20);
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 /*global toString:true*/
 
@@ -381,6 +377,33 @@ module.exports = {
 /* 1 */
 /***/ (function(module, exports) {
 
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file.
@@ -487,33 +510,6 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -537,10 +533,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(8);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(8);
   }
   return adapter;
 }
@@ -611,14 +607,14 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_particles_vue__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_particles_vue__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_particles_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_particles_vue__);
 /* eslint-disable */
 
@@ -677,14 +673,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		factory( global );
 	}
 
-<<<<<<< HEAD
 // Pass this if window is not defined yet
 } )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
-=======
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 // Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
 // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
@@ -733,12 +723,6 @@ var support = {};
 // unguarded in another place, it seems safer to define global only for this module
 
 
-<<<<<<< HEAD
-=======
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 var
 	version = "3.2.1",
@@ -746,20 +730,10 @@ var
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
 
-<<<<<<< HEAD
 		// The jQuery object is actually just the init constructor 'enhanced'
 		// Need init if jQuery is called (just allow error to be thrown if not included)
 		return new jQuery.fn.init( selector, context );
 	},
-=======
-var utils = __webpack_require__(0);
-var settle = __webpack_require__(23);
-var buildURL = __webpack_require__(25);
-var parseHeaders = __webpack_require__(26);
-var isURLSameOrigin = __webpack_require__(27);
-var createError = __webpack_require__(8);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(28);
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 	// Support: Android <=4.0 only
 	// Make sure we trim BOM and NBSP
@@ -884,14 +858,8 @@ jQuery.extend = jQuery.fn.extend = function() {
 
 	for ( ; i < length; i++ ) {
 
-<<<<<<< HEAD
 		// Only deal with non-null/undefined values
 		if ( ( options = arguments[ i ] ) != null ) {
-=======
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 			// Extend the base object
 			for ( name in options ) {
@@ -911,15 +879,9 @@ jQuery.extend = jQuery.fn.extend = function() {
 						copyIsArray = false;
 						clone = src && Array.isArray( src ) ? src : [];
 
-<<<<<<< HEAD
 					} else {
 						clone = src && jQuery.isPlainObject( src ) ? src : {};
 					}
-=======
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 					// Never move original objects, clone them
 					target[ name ] = jQuery.extend( deep, clone, copy );
@@ -938,14 +900,8 @@ jQuery.extend = jQuery.fn.extend = function() {
 
 jQuery.extend( {
 
-<<<<<<< HEAD
 	// Unique for each copy of jQuery on the page
 	expando: "jQuery" + ( version + Math.random() ).replace( /\D/g, "" ),
-=======
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 	// Assume jQuery is ready without the ready module
 	isReady: true,
@@ -972,7 +928,6 @@ jQuery.extend( {
 		var type = jQuery.type( obj );
 		return ( type === "number" || type === "string" ) &&
 
-<<<<<<< HEAD
 			// parseFloat NaNs numeric-cast false positives ("")
 			// ...but misinterprets leading-number strings, particularly hex literals ("0x...")
 			// subtraction forces infinities to NaN
@@ -1016,14 +971,6 @@ jQuery.extend( {
 		if ( obj == null ) {
 			return obj + "";
 		}
-=======
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(12);
-module.exports = __webpack_require__(53);
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 		// Support: Android <=2.3 only (functionish RegExp)
 		return typeof obj === "object" || typeof obj === "function" ?
@@ -1036,18 +983,12 @@ module.exports = __webpack_require__(53);
 		DOMEval( code );
 	},
 
-<<<<<<< HEAD
 	// Convert dashed to camelCase; used by the css and data modules
 	// Support: IE <=9 - 11, Edge 12 - 13
 	// Microsoft forgot to hump their vendor prefix (#9572)
 	camelCase: function( string ) {
 		return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
 	},
-=======
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_particles__ = __webpack_require__(4);
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 	each: function( obj, callback ) {
 		var length, i = 0;
@@ -1081,7 +1022,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	makeArray: function( arr, results ) {
 		var ret = results || [];
 
-<<<<<<< HEAD
 		if ( arr != null ) {
 			if ( isArrayLike( Object( arr ) ) ) {
 				jQuery.merge( ret,
@@ -1092,11 +1032,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				push.call( ret, arr );
 			}
 		}
-=======
-Vue.component('home', __webpack_require__(44));
-Vue.component('register', __webpack_require__(47));
-Vue.component('profile', __webpack_require__(50));
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 		return ret;
 	},
@@ -7675,11 +7610,7 @@ function defaultPrefilter( elem, props, opts ) {
 
 			anim.done( function() {
 
-<<<<<<< HEAD
 			/* eslint-enable no-loop-func */
-=======
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(15)(module)))
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 				// The final step of a "hide" animation is actually hiding the element
 				if ( !hidden ) {
@@ -10961,7 +10892,7 @@ return jQuery;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10979,7 +10910,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -11169,7 +11100,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11180,7 +11111,7 @@ var settle = __webpack_require__(24);
 var buildURL = __webpack_require__(26);
 var parseHeaders = __webpack_require__(27);
 var isURLSameOrigin = __webpack_require__(28);
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(9);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(29);
 
 module.exports = function xhrAdapter(config) {
@@ -11356,7 +11287,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11381,7 +11312,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11393,7 +11324,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11419,33 +11350,11 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_particles_vue__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__vue_particles_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__vue_particles_vue__);
-/* eslint-disable */
-
-
-const VueParticles = {
-
-    install (Vue, options) {
-        Vue.component('vue-particles', __WEBPACK_IMPORTED_MODULE_0__vue_particles_vue___default.a)
-    }
-
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (VueParticles);
-/* eslint-disable */
-
-
-/***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(51);
+module.exports = __webpack_require__(54);
 
 
 /***/ }),
@@ -11454,7 +11363,7 @@ module.exports = __webpack_require__(51);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_particles__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_particles__ = __webpack_require__(4);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -11476,6 +11385,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_particles__["a" /* default */]);
 
 Vue.component('home', __webpack_require__(45));
 Vue.component('register', __webpack_require__(48));
+Vue.component('profile', __webpack_require__(51));
 
 var app = new Vue({
   el: '#app'
@@ -11495,7 +11405,7 @@ window._ = __webpack_require__(15);
  */
 
 try {
-  window.$ = window.jQuery = __webpack_require__(4);
+  window.$ = window.jQuery = __webpack_require__(5);
 
   __webpack_require__(17);
 } catch (e) {}
@@ -28669,7 +28579,7 @@ module.exports = function(module) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-	 true ? factory(exports, __webpack_require__(4), __webpack_require__(18)) :
+	 true ? factory(exports, __webpack_require__(5), __webpack_require__(18)) :
 	typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
 	(factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';
@@ -35017,14 +34927,9 @@ module.exports = __webpack_require__(20);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(5);
-<<<<<<< HEAD
+var bind = __webpack_require__(6);
 var Axios = __webpack_require__(22);
-var defaults = __webpack_require__(2);
-=======
-var Axios = __webpack_require__(21);
 var defaults = __webpack_require__(3);
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 /**
  * Create an instance of Axios
@@ -35057,13 +34962,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(10);
-<<<<<<< HEAD
+axios.Cancel = __webpack_require__(11);
 axios.CancelToken = __webpack_require__(36);
-=======
-axios.CancelToken = __webpack_require__(35);
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
-axios.isCancel = __webpack_require__(9);
+axios.isCancel = __webpack_require__(10);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -35223,7 +35124,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(9);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -35641,15 +35542,9 @@ module.exports = InterceptorManager;
 
 
 var utils = __webpack_require__(0);
-<<<<<<< HEAD
 var transformData = __webpack_require__(33);
-var isCancel = __webpack_require__(9);
-var defaults = __webpack_require__(2);
-=======
-var transformData = __webpack_require__(32);
-var isCancel = __webpack_require__(9);
+var isCancel = __webpack_require__(10);
 var defaults = __webpack_require__(3);
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -35801,7 +35696,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(10);
+var Cancel = __webpack_require__(11);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -46707,11 +46602,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-<<<<<<< HEAD
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(39).setImmediate))
-=======
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(38).setImmediate))
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
 
 /***/ }),
 /* 39 */
@@ -46963,18 +46854,14 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-<<<<<<< HEAD
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
-=======
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(6)))
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
 
 /***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(42)
 /* template */
@@ -48803,7 +48690,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(46)
 /* template */
@@ -48851,28 +48738,24 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-<<<<<<< HEAD
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_particles__ = __webpack_require__(11);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-=======
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_particles__ = __webpack_require__(4);
->>>>>>> 8185553ebd27df8485056dbea1b5956f051ccc64
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49026,7 +48909,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(49)
 /* template */
@@ -49121,6 +49004,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -49150,8 +49052,19 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "page_title" }, [
-        _c("h1", [_vm._v("Sign up for free")])
+      _c("div", { staticClass: "page_title row" }, [
+        _c("div", { staticClass: "col-2" }, [
+          _c("a", { attrs: { href: "/" } }, [
+            _c("span", {
+              staticClass: "fa fa-arrow-left",
+              attrs: { "aria-hidden": "true" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "offset-2 col-4" }, [
+          _c("h1", { staticClass: "text-center" }, [_vm._v("Sign up for free")])
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form_wrapper" }, [
@@ -49172,8 +49085,31 @@ var staticRenderFns = [
                   attrs: {
                     type: "text",
                     name: "inputEmail",
-                    id: "inputEmail",
-                    placeholder: "Email or username"
+                    id: "username",
+                    placeholder: "Username*"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4" }, [
+                _c("i", {
+                  staticClass: "fa fa-user icon_right",
+                  attrs: { "aria-hidden": "true" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "horisontal_line" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("input", {
+                  staticClass: "form-control-plaintext",
+                  attrs: {
+                    type: "text",
+                    name: "inputEmail",
+                    id: "email",
+                    placeholder: "Email*"
                   }
                 })
               ]),
@@ -49195,8 +49131,8 @@ var staticRenderFns = [
                   attrs: {
                     type: "password",
                     name: "inputPassword",
-                    id: "inputPassword",
-                    placeholder: "Password"
+                    id: "password",
+                    placeholder: "Password*"
                   }
                 })
               ]),
@@ -49212,12 +49148,27 @@ var staticRenderFns = [
             _c("hr", { staticClass: "horisontal_line" }),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-8 label" }, [
-                _vm._v(
-                  "\n                        I am signing up as:\n                    "
-                )
+              _c("div", { staticClass: "col-md-8" }, [
+                _c("input", {
+                  staticClass: "form-control-plaintext",
+                  attrs: {
+                    type: "password",
+                    name: "inputPassword",
+                    id: "password",
+                    placeholder: "Confirm Password*"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4" }, [
+                _c("i", {
+                  staticClass: "fa fa-key icon_right",
+                  attrs: { "aria-hidden": "true" }
+                })
               ])
             ]),
+            _vm._v(" "),
+            _c("hr", { staticClass: "horisontal_line" }),
             _vm._v(" "),
             _c(
               "select",
@@ -49229,6 +49180,8 @@ var staticRenderFns = [
               ]
             ),
             _vm._v(" "),
+            _c("hr", { staticClass: "horisontal_line" }),
+            _vm._v(" "),
             _c("div", {
               staticClass: "g-recaptcha",
               attrs: {
@@ -49236,17 +49189,17 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("div", [
-              _c("input", {
-                staticClass: "btn btn-light btn-block",
-                attrs: {
-                  type: "submit",
-                  id: "signUp",
-                  href: "/profile",
-                  value: "Sign up"
-                }
-              })
-            ])
+            _c("br"),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "btn btn-light btn-block",
+              attrs: {
+                type: "submit",
+                id: "signUp",
+                href: "/profile",
+                value: "Sign up"
+              }
+            })
           ]
         ),
         _vm._v(" "),
@@ -49273,15 +49226,14 @@ if (false) {
 
 /***/ }),
 /* 51 */
-/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
+var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(51)
+var __vue_script__ = __webpack_require__(52)
 /* template */
-var __vue_template__ = __webpack_require__(52)
+var __vue_template__ = __webpack_require__(53)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49320,7 +49272,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49351,7 +49303,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_particles__["a" /* default */]);
 });
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49387,7 +49339,7 @@ if (false) {
 }
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

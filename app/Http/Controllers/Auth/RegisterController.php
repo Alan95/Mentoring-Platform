@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -40,6 +40,11 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showRegisterPage()
+    {
+        return view('register');
     }
 
     /**
@@ -72,25 +77,25 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function getForm(){
-        return view('register');
-    }
+    public function store(Request $request)
+    {
+        $email = $request->input('username');
+        //$registerType = $request->registerType;
+        $email = $request->input('email');
+        $password = $request->input('password');
 
-    public function postForm(Request $request){
-        $email = $request->inputEmail;
-        $registerType = $request->registerType;
-        $password = $request->inputPassword;
+        /*$this->validate($request, [
+            'title' => 'required|unique|max:255',
+            'body' => 'required',
+        ]);*/
 
         //grabbing the hidden token g-recaptcha sends, if the checkbox was clicked!
         $token = $request->input('g-recaptcha-response');
-        
+
         if($token){
-            //token was submitted
             return view('profile')->withRegisterType($registerType)->withEmail($email);
         }else{
             return redirect('/');
         }
-
-        
     }
 }
