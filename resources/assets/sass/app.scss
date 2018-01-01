@@ -17,10 +17,19 @@ $linear_gradient_color1: #ac4ddf;
 $linear_gradient_color2:rgb(100, 45, 133);
 $linear_gradient_color3:rgb(216, 132, 181);
 
+html {
+    height: 100%;
+}
+
 body{
-    margin:0;
+    margin: 0;
     background-image: linear-gradient(to bottom right, $linear_gradient_color1 , $linear_gradient_color2 , $linear_gradient_color3);
     background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body{
+    background-color: yellow;
 }
 
 .btn-violet {
@@ -35,6 +44,12 @@ body{
     color: $title_color;
     text-transform: uppercase;
     margin-bottom: 200px;
+
+    .card{
+        color: black;
+        width: 15rem;
+        margin: 10px auto 0;
+    }
 }
 
 .main-title {
@@ -72,7 +87,6 @@ body{
 
 input {
     margin: 25px 20px 0px 20px ;
-    
 }
 
 input::placeholder {
@@ -112,3 +126,16 @@ input::placeholder {
     text-align: center;
 }
 
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+transform: translateX(10px);
+opacity: 0;
+}
