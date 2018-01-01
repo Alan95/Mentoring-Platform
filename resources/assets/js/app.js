@@ -19,6 +19,7 @@ Vue.use(VueParticles)
 
 Vue.component('home', require('./components/Home.vue'));
 Vue.component('register', require('./components/Register.vue'));
+Vue.component('profile', require('./components/Profile.vue'));
 
 const app = new Vue({
     el: '#app'
