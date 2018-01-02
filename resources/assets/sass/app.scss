@@ -116,19 +116,6 @@ input::placeholder {
     text-align: center;
 }
 
-.slide-fade-enter-active {
-    transition: all .3s ease;
-}
-
-.slide-fade-leave-active {
-transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-transform: translateX(10px);
-opacity: 0;
-}
 .g-recaptcha{
     width: 10em;
     height: 3em;
@@ -152,9 +139,16 @@ opacity: 0;
     margin-left: 5%;
     margin-top: 30px;
 }
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
 
-.fa-arrow-left{
-    font-size: 3rem;
-    text-decoration: none;
-    color: white;
+.slide-fade-leave-active {
+transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+transform: translateX(10px);
+opacity: 0;
 }
