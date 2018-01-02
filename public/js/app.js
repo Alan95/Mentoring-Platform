@@ -46535,29 +46535,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -46615,17 +46592,6 @@ var staticRenderFns = [
           [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-8" }, [
-                _vm._v("\n<<<<<<< HEAD\n                            "),
-                _c("input", {
-                  staticClass: "form-control-plaintext",
-                  attrs: {
-                    type: "text",
-                    name: "inputEmail",
-                    id: "inputEmail",
-                    placeholder: "Email or username"
-                  }
-                }),
-                _vm._v("\n=======\n                            "),
                 _c("input", {
                   staticClass: "form-control-plaintext",
                   attrs: {
@@ -46657,10 +46623,7 @@ var staticRenderFns = [
                     id: "email",
                     placeholder: "Email*"
                   }
-                }),
-                _vm._v(
-                  "\n>>>>>>> caf00ee88e84a917a4fecd2e02f7c1c275b938fe\n                        "
-                )
+                })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-4" }, [
@@ -46675,17 +46638,6 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-8" }, [
-                _vm._v("\n<<<<<<< HEAD\n                            "),
-                _c("input", {
-                  staticClass: "form-control-plaintext",
-                  attrs: {
-                    type: "password",
-                    name: "inputPassword",
-                    id: "inputPassword",
-                    placeholder: "Password"
-                  }
-                }),
-                _vm._v("\n=======\n                            "),
                 _c("input", {
                   staticClass: "form-control-plaintext",
                   attrs: {
@@ -46717,10 +46669,7 @@ var staticRenderFns = [
                     id: "password",
                     placeholder: "Confirm Password*"
                   }
-                }),
-                _vm._v(
-                  "\n>>>>>>> caf00ee88e84a917a4fecd2e02f7c1c275b938fe\n                        "
-                )
+                })
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-4" }, [
@@ -46732,17 +46681,7 @@ var staticRenderFns = [
             ]),
             _vm._v(" "),
             _c("hr", { staticClass: "horisontal_line" }),
-            _vm._v("\n<<<<<<< HEAD\n                    "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-8 label" }, [
-                _vm._v(
-                  "\n                            I am signing up as:\n                        "
-                )
-              ])
-            ]),
-            _vm._v(
-              "\n=======\n>>>>>>> caf00ee88e84a917a4fecd2e02f7c1c275b938fe\n                    "
-            ),
+            _vm._v(" "),
             _c(
               "select",
               { staticClass: "form-control", attrs: { name: "registerType" } },
@@ -46752,28 +46691,7 @@ var staticRenderFns = [
                 _c("option", { attrs: { value: "me" } }, [_vm._v("Mentee")])
               ]
             ),
-            _vm._v(" \n<<<<<<< HEAD\n                    "),
-            _c("div", {
-              staticClass: "g-recaptcha",
-              attrs: {
-                "data-sitekey": "6Les2T4UAAAAAKTY_F0SjXtjfgrDbc8lwKLpLaoG"
-              }
-            }),
             _vm._v(" "),
-            _c("div", [
-              _c("input", {
-                staticClass: "btn btn-light btn-block",
-                attrs: {
-                  type: "submit",
-                  id: "signUp",
-                  href: "/profile",
-                  value: "Sign up"
-                }
-              })
-            ]),
-            _vm._v(
-              "                                              \n=======\n                    "
-            ),
             _c("hr", { staticClass: "horisontal_line" }),
             _vm._v(" "),
             _c("div", {
@@ -46793,10 +46711,7 @@ var staticRenderFns = [
                 href: "/profile",
                 value: "Sign up"
               }
-            }),
-            _vm._v(
-              "\n                                                                \n>>>>>>> caf00ee88e84a917a4fecd2e02f7c1c275b938fe\n                "
-            )
+            })
           ]
         ),
         _vm._v(" "),
@@ -46939,7 +46854,7 @@ if (false) {
 /* 53 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: \r\n@import \"node_modules/font-awesome/scss/font-awesome.scss\";\r\n^\r\n      File to import not found or unreadable: node_modules/font-awesome/scss/font-awesome.scss.\nParent style sheet: stdin\r\n      in C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\resources\\assets\\sass\\app.scss (line 13, column 1)\n    at runLoaders (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\loader-runner\\lib\\LoaderRunner.js:230:18\n    at context.callback (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\sass-loader\\lib\\loader.js:55:13)\n    at Object.<anonymous> (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\async\\dist\\async.js:2257:31)\n    at Object.callback (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\async\\dist\\async.js:958:16)\n    at options.error (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\node-sass\\lib\\index.js:294:32)");
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

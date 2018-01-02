@@ -152,32 +152,3 @@ transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 transform: translateX(10px);
 opacity: 0;
 }
-.g-recaptcha{
-    width: 10em;
-    height: 3em;
-    margin: 5% 10% 10% 10%;
-}
-
-.form-control{
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 10px;
-}
-
-.label{
-    color: $title_color;
-    margin-left: 5%;
-    margin-top: 30px;
-}
-
-#signUp{
-    width: 90%;
-    margin-left: 5%;
-    margin-top: 30px;
-}
-
-.fa-arrow-left{
-    font-size: 3rem;
-    text-decoration: none;
-    color: white;
-}
