@@ -6,8 +6,25 @@
             <p>The best platform</p>
             <div class="btn-group">
                 <a class="btn btn-light btn-sm" href="/register">Login</a>
-                <a class="btn btn-light btn-sm btn-violet" href="/register">Sign up</a>
+                <a class="btn btn-light btn-sm btn-violet" @click="showCard = !showCard">Sign up</a>
             </div>
+            <transition name="slide-fade">
+                <div class="card" v-if="showCard">
+                    <div class="card-body">
+                        <h5 class="card-title">I'm a ...</h5>    
+                        <div class="row">
+                            <div class="col-6 border-line-left">
+                                <!--Todo: Adding Mentoricon-->
+                                <a href="register" class="btn btn-violet btn-xs">Mentor</a>
+                            </div>
+                            <div class="col-6 border-line-right">
+                                <!--Todo: Adding Menteeicon-->
+                                <a href="/register" class="btn btn-violet btn-xs">Mentee</a>
+                            </div>    
+                        </div>    
+                    </div>    
+                </div>
+            </transition>
         </div>
     </div>
 </template>
@@ -20,8 +37,12 @@
         mounted() {
             console.log('Component mounted.')
         },
+        data() {
+            return{
+                showCard: false
+            }
+        },
         methods: {
-            
         }
     }
 </script>

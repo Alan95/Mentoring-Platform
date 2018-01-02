@@ -46265,6 +46265,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_particles__["a" /* default */]);
@@ -46272,6 +46289,11 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_particles__["a" /* default */]);
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         console.log('Component mounted.');
+    },
+    data: function data() {
+        return {
+            showCard: false
+        };
     },
 
     methods: {}
@@ -46310,40 +46332,81 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm._m(0)
+      _c(
+        "div",
+        { staticClass: "titlebox text-center" },
+        [
+          _c("h1", { staticClass: "main-title" }, [_vm._v("Mentor Me")]),
+          _vm._v(" "),
+          _c("p", [_vm._v("The best platform")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "btn-group" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-light btn-sm",
+                attrs: { href: "/register" }
+              },
+              [_vm._v("Login")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-light btn-sm btn-violet",
+                on: {
+                  click: function($event) {
+                    _vm.showCard = !_vm.showCard
+                  }
+                }
+              },
+              [_vm._v("Sign up")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("transition", { attrs: { name: "slide-fade" } }, [
+            _vm.showCard
+              ? _c("div", { staticClass: "card" }, [
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("h5", { staticClass: "card-title" }, [
+                      _vm._v("I'm a ...")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-6 border-line-left" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-violet btn-xs",
+                            attrs: { href: "register" }
+                          },
+                          [_vm._v("Mentor")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6 border-line-right" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-violet btn-xs",
+                            attrs: { href: "/register" }
+                          },
+                          [_vm._v("Mentee")]
+                        )
+                      ])
+                    ])
+                  ])
+                ])
+              : _vm._e()
+          ])
+        ],
+        1
+      )
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "titlebox text-center" }, [
-      _c("h1", { staticClass: "main-title" }, [_vm._v("Mentor Me")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("The best platform")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "btn-group" }, [
-        _c(
-          "a",
-          { staticClass: "btn btn-light btn-sm", attrs: { href: "/register" } },
-          [_vm._v("Login")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-light btn-sm btn-violet",
-            attrs: { href: "/register" }
-          },
-          [_vm._v("Sign up")]
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -46721,7 +46784,7 @@ if (false) {
 /* 53 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: \r\n}\r\n^\r\n      Invalid CSS after \"}\": expected 1 selector or at-rule, was \"<<<<<<< HEAD\"\r\n      in C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\resources\\assets\\sass\\app.scss (line 113, column 2)\n    at runLoaders (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\webpack\\lib\\NormalModule.js:195:19)\n    at C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\loader-runner\\lib\\LoaderRunner.js:230:18\n    at context.callback (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\loader-runner\\lib\\LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\sass-loader\\lib\\loader.js:55:13)\n    at Object.<anonymous> (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\async\\dist\\async.js:2257:31)\n    at Object.callback (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\async\\dist\\async.js:958:16)\n    at options.error (C:\\Users\\tjasa\\Desktop\\github\\Mentoring-Platform\\node_modules\\node-sass\\lib\\index.js:294:32)");
 
 /***/ })
 /******/ ]);
