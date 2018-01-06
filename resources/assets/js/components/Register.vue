@@ -86,9 +86,10 @@
                         registerType: self.user.registerType
                     })
                     .then(response => {
-                        self.changeSiteTo('/profile');
+                        self.changePath('/profile');
                     })
                     .catch(e => {
+                        alert('Error!')
                         self.errors.push(e)
                     })        
                 } else {
