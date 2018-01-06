@@ -17,10 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', 'Auth\RegisterController@showRegisterPage');
-Route::post('/register', 'Auth\RegisterController@store');
+Route::get('/register', 'UserController@showRegisterForm');
+Route::post('/api/register', 'UserController@addNewUser');
 
+Route::get('/profile', 'ProfileController@showProfilePage')->name('profile');
 
-Route::get('/profile', 'ProfileController@showProfilePage');
-
-
+Route::get('/api/user', 'UserController@getUser');

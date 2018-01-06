@@ -85,8 +85,9 @@ body{
     background-color: $title_color;
 }
 
-input[type="text"], input[type='password'] {
+input[type="text"], input[type='password'], input[type='email'] {
     margin: 25px 20px 0px 20px ;
+    color: white;
 }
 
 input::placeholder {
@@ -151,4 +152,8 @@ transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 /* .slide-fade-leave-active below version 2.1.8 */ {
 transform: translateX(10px);
 opacity: 0;
+}
+
+.fa-arrow-left{
+    color: white;
 }
