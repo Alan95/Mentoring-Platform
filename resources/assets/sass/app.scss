@@ -291,3 +291,45 @@ opacity: 0;
 
 }
 
+.myProfile{
+
+    label{
+        margin: 0px;
+        padding: 0px;
+        color: $title_color;
+        font-size: 1.2em;
+        display: block;
+    }
+
+    input.input_myprofile[type="text"]{
+        margin: 0px 0px 0px 0px ;
+        color: $background_color;
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+    .button_myprofile{
+        color: $background_complementary;
+        margin-bottom: 5%;
+    }
+
+    .dropdown {
+        position: relative;
+
+        .dropdown-menu{
+            position: absolute;
+        }
+      }
+    
+      .fa-user-plus{
+          color: $title_color;
+      }
+
+      .fa-user-circle{
+          color: $title_color;
+          height: 50px;
+          
+      }
+      
+}
+

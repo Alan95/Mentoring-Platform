@@ -23,3 +23,14 @@ Route::post('/api/register', 'UserController@addNewUser');
 Route::get('/profile', 'ProfileController@showProfilePage')->name('profile');
 
 Route::get('/api/user', 'UserController@getUser');
+
+Route::get('/myProfile', function(){
+    return view('myProfile');
+});
+
+Route::get('/api/language', 'LanguageController@getLanguage');
+
+Route::post('uploadAvatar', 'UserController@uploadAvatar');
+
+
+
