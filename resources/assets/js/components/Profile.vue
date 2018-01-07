@@ -37,9 +37,10 @@
                   
         </div> 
         <div v-else-if="section == 'my-profile'">
-            <div class="jumbotron">
-                <h3>{{ user.username }}</h3>
-            </div> 
+            <!--<div class="jumbotron">
+                    <h3>Hello, {{ user.username }}, here are your settings:</h3>
+            </div> -->
+            <myprofile></myprofile>
         </div>    
         <div v-else-if="section == 'list'">
             <list></list>
@@ -71,7 +72,7 @@
         },
         components:{
          'chat': Chat,
-         'list': List
+         'list': List,
         },
         data(){
             return{

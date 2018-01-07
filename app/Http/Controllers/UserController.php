@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use \Input as Input;
 
 
 class UserController extends BaseController
@@ -47,4 +48,16 @@ class UserController extends BaseController
             return response()->json(Auth::user());
         } 
     }
+
+    public function uploadAvatar()
+    {
+        if(Input::hasFile('file')){
+
+			echo 'Uploaded';
+			$file = Input::file('file');
+			$file->move('uploadAvatar', $file->getClientOriginalName());
+			echo '';
+    }
+
+
 }
