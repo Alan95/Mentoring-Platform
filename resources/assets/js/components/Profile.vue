@@ -37,7 +37,7 @@
                   
         </div> 
         <div v-else-if="section == 'my-profile'">
-            <myprofile></myprofile>
+            <myprofile :user="user"> </myprofile>
         </div>    
         <div v-else-if="section == 'list'">
             <list></list>

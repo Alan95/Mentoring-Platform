@@ -47832,7 +47832,7 @@ var render = function() {
     _vm.section == "dashboard"
       ? _c("div", [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])
       : _vm.section == "my-profile"
-        ? _c("div", [_c("myprofile")], 1)
+        ? _c("div", [_c("myprofile", { attrs: { user: _vm.user } })], 1)
         : _vm.section == "list"
           ? _c("div", [_c("list")], 1)
           : _vm.section == "chats"
@@ -48040,19 +48040,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         console.log('Component mounted.');
     },
+
+    props: ["user"],
     data: function data() {
         return {
-            timeZoneVisible: false,
-            programmingLanguages: ['Java', 'PHP', 'Javascript', 'C++', 'Ruby', 'Python', 'SQL'],
-            languages: []
-
+            timeZoneVisible: false
         };
     },
     created: function created() {
@@ -48075,193 +48072,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "jumbotron",
-      staticStyle: { "background-color": "transparent !important" }
-    },
-    [
-      _c("div", { staticClass: "container myProfile" }, [
-        _c("div", { staticClass: "row" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-3" }, [
-            _c("label", { staticClass: "myProfile_label" }, [
-              _vm._v("Programming languages")
-            ]),
-            _vm._v(" "),
-            _c("table", { staticClass: "table table-stripped" }, [
-              _c("thead"),
-              _vm._v(" "),
-              _c("tbody", [
-                _c(
-                  "tr",
-                  _vm._l(_vm.programmingLanguages, function(
-                    programmingLanguage
-                  ) {
-                    return _c("td", [
-                      _c("input", {
-                        attrs: {
-                          type: "checkbox",
-                          "v-model": programmingLanguage
-                        },
-                        domProps: { value: "programmingLanguage" }
-                      })
-                    ])
-                  })
-                ),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(_vm.programmingLanguages))])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("label", { staticClass: "myProfile_label" }, [
-              _vm._v("Spoken languages")
-            ]),
-            _vm._v(" "),
-            _vm._m(1)
-          ]),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3)
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Firstname")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Lastname")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Username")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Email")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Password")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "button_myprofile btn-block btn-xs",
-        attrs: { type: "button", value: "Change Password" }
-      }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Hometown")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("table", { staticClass: "table table-stripped" }, [
-      _c("thead"),
-      _vm._v(" "),
-      _c("tbody", [
-        _c("tr", [_c("td", [_vm._v("trying to dynamicaly generate them")])])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("label", { staticClass: "myProfile_label" }, [
-        _vm._v("How many mentees?")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between" }, [
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("input", { attrs: { type: "checkbox" } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between" }, [
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 col-offset-6" }, [
-          _c("input", { attrs: { type: "checkbox" } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between" }, [
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("input", { attrs: { type: "checkbox" } })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("h1", [_vm._v("trying to upload avatar, not working just yet")])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
+module.exports={render:function(){},staticRenderFns:[]}
 if (false) {
   module.hot.accept()
   if (module.hot.data) {

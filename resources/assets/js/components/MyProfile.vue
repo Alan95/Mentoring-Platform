@@ -1,4 +1,5 @@
 <template>
+    <h1>{{ user.email }}</h1>
     <div class="jumbotron" style="background-color:transparent !important">
         <div class="container myProfile">
             <div class="row">
@@ -18,14 +19,11 @@
                 </div>
                 <div class="col-md-3">
                     <label class=myProfile_label>Programming languages</label>
-                    <table class="table table-stripped">
-                        <thead>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td v-for="programmingLanguage in programmingLanguages"><input type="checkbox" :value="'programmingLanguage'" :v-model=programmingLanguage></td>
-                            </tr>
-                            <span>{{ programmingLanguages }}</span>
+                      
+                  
+                        
+                               
+                            
                         </tbody>
                     </table>
                     <label class=myProfile_label>Spoken languages</label>
@@ -101,12 +99,10 @@
         mounted() {
             console.log('Component mounted.')
         },
+        props: ["user"],
         data() {
             return{
                 timeZoneVisible: false,
-                programmingLanguages: ['Java', 'PHP', 'Javascript', 'C++', 'Ruby', 'Python', 'SQL'],
-                languages: [],
-                
             }
         },
         created(){
