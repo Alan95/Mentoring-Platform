@@ -1,4 +1,4 @@
 @extends('layout')
 @section('content')
-    <myprofile></myprofile>
+    <login></login>
 @endsection    

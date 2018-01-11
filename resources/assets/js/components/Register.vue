@@ -53,7 +53,7 @@
                 <br>
                 <input @click="registerUser" id="signUp" class="btn btn-light btn-block" value="Sign up"/>
                 <p class="register_text">Do you already have an account?<br>
-                <a href="/register"><span class="login_label">Login here</span></a></p>
+                <a href="/login"><span class="login_label">Login here</span></a></p>
             </div>
     </div>
 </template>

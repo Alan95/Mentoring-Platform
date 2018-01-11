@@ -15,16 +15,6 @@
                     <input type="text" class="input_myprofile">
                     <input type="button" class="button_myprofile btn-block btn-xs" value="Change Password">
                     <label class="myProfile_label">Hometown</label>
-                    <div class="dropdown">
-                        <button class="button_myprofile btn-block btn-xs dropdown-toggle" v-on:click="timeZoneVisible = !timeZoneVisible">
-                            Timezone
-                        </button>
-                        <ul class="dropdown-menu" v-show="timeZoneVisible">
-                                <li><a>Timezone 1</a></li>
-                                <li><a>Timezone 2</a></li>
-                                <li><a>Timezone 3</a></li>
-                        </ul>                        
-                    </div>                                      
                 </div>
                 <div class="col-md-3">
                     <label class=myProfile_label>Programming languages</label>
@@ -33,11 +23,9 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <!--<tr v-for="language in languages">
-                                    <td>{{ language.name }}</td>-->
-                                <td>trying to dynamicaly generate them - </td>
+                                <td v-for="programmingLanguage in programmingLanguages"><input type="checkbox" :value="'programmingLanguage'" :v-model=programmingLanguage></td>
                             </tr>
-
+                            <span>{{ programmingLanguages }}</span>
                         </tbody>
                     </table>
                     <label class=myProfile_label>Spoken languages</label>
@@ -116,7 +104,9 @@
         data() {
             return{
                 timeZoneVisible: false,
+                programmingLanguages: ['Java', 'PHP', 'Javascript', 'C++', 'Ruby', 'Python', 'SQL'],
                 languages: [],
+                
             }
         },
         created(){
