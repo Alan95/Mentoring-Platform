@@ -23,6 +23,7 @@ Vue.use(VueParticles)
 
 Vue.component('home', require('./components/Home.vue'));
 Vue.component('register', require('./components/Register.vue'));
+Vue.component('login', require('./components/Login.vue'));
 Vue.component('profile', require('./components/Profile.vue'));
 Vue.component('chat', require('./components/Chat.vue'));
 Vue.component('myprofile', require('./components/MyProfile.vue'));

@@ -19,6 +19,11 @@ class UserController extends BaseController
     {
         return view('register');
     }
+
+    public function showLoginForm()
+    {
+        return view('login');
+    }
     public function addNewUser(Request $request)
     {
         $request->validate([
@@ -37,6 +42,17 @@ class UserController extends BaseController
         $this->loginUser($user);
         return response(200);
     }
+
+    public function doLogin(request $request)
+    {
+              
+        $email=$request->email;
+        $password=$request->password;
+        $user = User::where('email', '=', $email)->first();
+        $this->loginUser($user);
+        return response(200);
+    }
+    
     private function loginUser($user)
     {
         Auth::login($user);
@@ -59,5 +75,5 @@ class UserController extends BaseController
 			echo '';
     }
 
-
+    }
 }

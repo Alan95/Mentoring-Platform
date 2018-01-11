@@ -20,7 +20,7 @@
                 <a class="nav-link" href="#" @click="showSection('chats')">Chats</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="#" @click="logout">Logout</a>
             </li>
         </ul>
         <br>
@@ -37,9 +37,6 @@
                   
         </div> 
         <div v-else-if="section == 'my-profile'">
-            <!--<div class="jumbotron">
-                    <h3>Hello, {{ user.username }}, here are your settings:</h3>
-            </div> -->
             <myprofile></myprofile>
         </div>    
         <div v-else-if="section == 'list'">
@@ -96,10 +93,14 @@
                 })
                 .catch(e => { 
                     self.errors.push(e)
+                    console.log(this.e);
                 })
             },
             showSection(section){
                 this.section = section;
+            },
+            logout(){
+
             }
         }
     }

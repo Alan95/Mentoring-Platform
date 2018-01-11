@@ -5,7 +5,7 @@
             <h1 class="main-title">Mentor Me</h1>
             <p>The global mentoring platform.</p>
             <div class="btn-group">
-                <a class="btn btn-light btn-sm" href="/register">Login</a>
+                <a class="btn btn-light btn-sm" href="/login">Login</a>
                 <a class="btn btn-light btn-sm btn-violet" @click="showCard = !showCard">Sign up</a>
             </div>
             <transition name="slide-fade">
