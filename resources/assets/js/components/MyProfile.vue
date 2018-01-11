@@ -23,9 +23,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td v-for="programmingLanguage in programmingLanguages"><input type="checkbox" :value="'programmingLanguage'" :v-model=programmingLanguage></td>
+                                <td v-for="(programmingLanguage, ind) in programmingLanguages"><input type="checkbox" value="programmingLanguage.checked" v-model="programmingLanguage.checked">{{ programmingLanguage.name }}</td>
                             </tr>
-                            <span>{{ programmingLanguages }}</span>
                         </tbody>
                     </table>
                     <label class=myProfile_label>Spoken languages</label>
@@ -34,7 +33,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>trying to dynamicaly generate them</td>
+                                <td v-for="(speakingLanguage, ind) in speakingLanguages"><input type="checkbox" value="speakingLanguage.checked" v-model="speakingLanguage.checked">{{ speakingLanguage.name }}</td>
                             </tr>
 
                         </tbody>
@@ -104,8 +103,28 @@
         data() {
             return{
                 timeZoneVisible: false,
-                programmingLanguages: ['Java', 'PHP', 'Javascript', 'C++', 'Ruby', 'Python', 'SQL'],
-                languages: [],
+                programmingLanguages: [
+                    {name: 'Java', checked: false},
+                    {name: 'PHP', checked: false},
+                    {name: 'C++', checked: false},
+                    {name: 'C#', checked: false},
+                    {name: 'HTML', checked: false},
+                    {name: 'SQL', checked: false},
+                    {name: 'C', checked: false},
+                    {name: 'Ruby', checked: false}
+                ],  
+                speakingLanguages: [
+                    {name: 'English', checked: false},
+                    {name: 'German', checked: false},
+                    {name: 'French', checked: false},
+                    {name: 'Chinese', checked: false},
+                    {name: 'Russian', checked: false},
+                    {name: 'Spanish', checked: false},
+                ],      
+                user: {
+                    programmingLanguages: []        
+                }
+                
                 
             }
         },
