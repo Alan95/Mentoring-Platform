@@ -14,11 +14,11 @@
                         <h5 class="card-title">I'm a ...</h5>    
                         <div class="row">
                             <div class="col-6 border-line-left">
-                                <!--Todo: Adding Mentoricon-->
+                                <img v-bind:src="'images/' + mentorLink" /> 
                                 <a href="register" class="btn btn-violet btn-xs">Mentor</a>
                             </div>
                             <div class="col-6 border-line-right">
-                                <!--Todo: Adding Menteeicon-->
+                                <img v-bind:src="'images/' + menteeLink" />
                                 <a href="/register" class="btn btn-violet btn-xs">Mentee</a>
                             </div>    
                         </div>    
@@ -39,10 +39,13 @@
         },
         data() {
             return{
-                showCard: false
+                showCard: false,
+                mentorLink: 'mentor.jpg',
+                menteeLink: 'mentee.jpg'
             }
         },
         methods: {
+
         }
     }
 </script>

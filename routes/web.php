@@ -27,11 +27,6 @@ Route::get('/profile', 'ProfileController@showProfilePage')->name('profile');
 
 Route::get('/api/user', 'UserController@getUser');
 
-Route::get('/myProfile', function(){
-    return view('myProfile');
-});
-
 Route::post('uploadAvatar', 'UserController@uploadAvatar');
-
 
 

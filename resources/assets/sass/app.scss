@@ -47,7 +47,7 @@ body{
 
     .card{
         color: black;
-        width: 15rem;
+        width: 30rem;
         margin: 10px auto 0;
     }
 }
@@ -328,8 +328,30 @@ opacity: 0;
       .fa-user-circle{
           color: $title_color;
           height: 50px;
-          
+      }
+
+      .table th, .table td{
+          color: $title_color;
+      }
+
+      img {
+        width: 100%;
+        margin: auto;
+        display: block;
+        margin-bottom: 10px;
+        border: 10px
+      }
+
+      .avatarBox{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
       }
       
+      .saveSettings{
+        position: absolute;
+        right:    0;
+        bottom:   0;
+      }
 }
 
