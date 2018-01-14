@@ -48040,6 +48040,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -48049,12 +48050,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     props: ["user"],
     data: function data() {
         return {
-            timeZoneVisible: false
+            timeZoneVisible: false,
+
+            programmingLanguages: [{ name: 'Java', checked: false }, { name: 'PHP', checked: false }, { name: 'C++', checked: false }, { name: 'C#', checked: false }, { name: 'HTML', checked: false }, { name: 'SQL', checked: false }, { name: 'C', checked: false }, { name: 'Ruby', checked: false }],
+            speakingLanguages: [{ name: 'English', checked: false }, { name: 'German', checked: false }, { name: 'French', checked: false }, { name: 'Chinese', checked: false }, { name: 'Russian', checked: false }, { name: 'Spanish', checked: false }],
+            editedUser: {
+                programmingLanguages: []
+            }
         };
     },
-    created: function created() {
-        this.getLanguage();
-    },
+    created: function created() {},
 
     methods: {
         getLanguage: function getLanguage() {
@@ -48072,7 +48077,285 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function(){},staticRenderFns:[]}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "jumbotron",
+      staticStyle: { "background-color": "transparent !important" }
+    },
+    [
+      _c("h1", [_vm._v(_vm._s(_vm.user.email))]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container myProfile" }, [
+        _c("div", { staticClass: "row" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("label", { staticClass: "myProfile_label" }, [
+              _vm._v("Programming languages")
+            ]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table table-stripped" }, [
+              _c("thead"),
+              _vm._v(" "),
+              _c("tbody", [
+                _c(
+                  "tr",
+                  _vm._l(_vm.programmingLanguages, function(
+                    programmingLanguage,
+                    ind
+                  ) {
+                    return _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: programmingLanguage.checked,
+                            expression: "programmingLanguage.checked"
+                          }
+                        ],
+                        attrs: {
+                          type: "checkbox",
+                          value: "programmingLanguage.checked"
+                        },
+                        domProps: {
+                          checked: Array.isArray(programmingLanguage.checked)
+                            ? _vm._i(
+                                programmingLanguage.checked,
+                                "programmingLanguage.checked"
+                              ) > -1
+                            : programmingLanguage.checked
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = programmingLanguage.checked,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "programmingLanguage.checked",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  (programmingLanguage.checked = $$a.concat([
+                                    $$v
+                                  ]))
+                              } else {
+                                $$i > -1 &&
+                                  (programmingLanguage.checked = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.$set(programmingLanguage, "checked", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(_vm._s(programmingLanguage.name))
+                    ])
+                  })
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "myProfile_label" }, [
+              _vm._v("Spoken languages")
+            ]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table table-stripped" }, [
+              _c("thead"),
+              _vm._v(" "),
+              _c("tbody", [
+                _c(
+                  "tr",
+                  _vm._l(_vm.speakingLanguages, function(
+                    speakingLanguage,
+                    ind
+                  ) {
+                    return _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: speakingLanguage.checked,
+                            expression: "speakingLanguage.checked"
+                          }
+                        ],
+                        attrs: {
+                          type: "checkbox",
+                          value: "speakingLanguage.checked"
+                        },
+                        domProps: {
+                          checked: Array.isArray(speakingLanguage.checked)
+                            ? _vm._i(
+                                speakingLanguage.checked,
+                                "speakingLanguage.checked"
+                              ) > -1
+                            : speakingLanguage.checked
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = speakingLanguage.checked,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "speakingLanguage.checked",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  (speakingLanguage.checked = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (speakingLanguage.checked = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.$set(speakingLanguage, "checked", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(_vm._s(speakingLanguage.name))
+                    ])
+                  })
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2)
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Firstname")]),
+      _vm._v(" "),
+      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
+      _vm._v(" "),
+      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Lastname")]),
+      _vm._v(" "),
+      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
+      _vm._v(" "),
+      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Username")]),
+      _vm._v(" "),
+      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
+      _vm._v(" "),
+      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "input_myprofile",
+        attrs: { type: "text", value: "{{", "user.email": "", "}}": "" }
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Password")]),
+      _vm._v(" "),
+      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "button_myprofile btn-block btn-xs",
+        attrs: { type: "button", value: "Change Password" }
+      }),
+      _vm._v(" "),
+      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Hometown")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("label", { staticClass: "myProfile_label" }, [
+        _vm._v("How many mentees?")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-between" }, [
+        _c("div", { staticClass: "col-3" }, [
+          _c("i", {
+            staticClass: "fa fa-user-plus",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3" }, [
+          _c("input", { attrs: { type: "checkbox" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-between" }, [
+        _c("div", { staticClass: "col-3" }, [
+          _c("i", {
+            staticClass: "fa fa-user-plus",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3" }, [
+          _c("i", {
+            staticClass: "fa fa-user-plus",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3 col-offset-6" }, [
+          _c("input", { attrs: { type: "checkbox" } })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row justify-content-between" }, [
+        _c("div", { staticClass: "col-3" }, [
+          _c("i", {
+            staticClass: "fa fa-user-plus",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3" }, [
+          _c("i", {
+            staticClass: "fa fa-user-plus",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3" }, [
+          _c("i", {
+            staticClass: "fa fa-user-plus",
+            attrs: { "aria-hidden": "true" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-3" }, [
+          _c("input", { attrs: { type: "checkbox" } })
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("h1", [_vm._v("trying to upload avatar, not working just yet")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {

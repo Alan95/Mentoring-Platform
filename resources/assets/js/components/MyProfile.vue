@@ -1,6 +1,6 @@
 <template>
-    <h1>{{ user.email }}</h1>
     <div class="jumbotron" style="background-color:transparent !important">
+            <h1>{{ user.email }}</h1>
         <div class="container myProfile">
             <div class="row">
                 <div class="col-md-3">
@@ -11,7 +11,7 @@
                     <label class="myProfile_label">Username</label>
                     <input type="text" class="input_myprofile">
                     <label class="myProfile_label">Email</label>
-                    <input type="text" class="input_myprofile">
+                    <input type="text" class="input_myprofile" value={{ user.email }}>
                     <label class="myProfile_label">Password</label>
                     <input type="text" class="input_myprofile">
                     <input type="button" class="button_myprofile btn-block btn-xs" value="Change Password">
@@ -19,11 +19,13 @@
                 </div>
                 <div class="col-md-3">
                     <label class=myProfile_label>Programming languages</label>
-                      
-                  
-                        
-                               
-                            
+                    <table class="table table-stripped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td v-for="(programmingLanguage, ind) in programmingLanguages"><input type="checkbox" value="programmingLanguage.checked" v-model="programmingLanguage.checked">{{ programmingLanguage.name }}</td>
+                            </tr>
                         </tbody>
                     </table>
                     <label class=myProfile_label>Spoken languages</label>
@@ -32,9 +34,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>trying to dynamicaly generate them</td>
+                                <td v-for="(speakingLanguage, ind) in speakingLanguages"><input type="checkbox" value="speakingLanguage.checked" v-model="speakingLanguage.checked">{{ speakingLanguage.name }}</td>
                             </tr>
-
                         </tbody>
                     </table>                    
 
@@ -103,10 +104,32 @@
         data() {
             return{
                 timeZoneVisible: false,
+
+                programmingLanguages: [
+                    {name: 'Java', checked: false},
+                    {name: 'PHP', checked: false},
+                    {name: 'C++', checked: false},
+                    {name: 'C#', checked: false},
+                    {name: 'HTML', checked: false},
+                    {name: 'SQL', checked: false},
+                    {name: 'C', checked: false},
+                    {name: 'Ruby', checked: false}
+                ],  
+                speakingLanguages: [
+                    {name: 'English', checked: false},
+                    {name: 'German', checked: false},
+                    {name: 'French', checked: false},
+                    {name: 'Chinese', checked: false},
+                    {name: 'Russian', checked: false},
+                    {name: 'Spanish', checked: false},
+                ],      
+                editedUser: {
+                    programmingLanguages: []        
+                }
             }
         },
         created(){
-            this.getLanguage();
+            
         },        
         methods: {
             getLanguage(){
