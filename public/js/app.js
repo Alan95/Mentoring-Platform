@@ -46345,7 +46345,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_particles__["a" /* default */]);
     data: function data() {
         return {
             showCard: false,
-            image: ''
+            mentorLink: 'mentor.jpg',
+            menteeLink: 'mentee.jpg'
         };
     },
 
@@ -46427,6 +46428,10 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col-6 border-line-left" }, [
+                        _c("img", {
+                          attrs: { src: "images/" + _vm.mentorLink }
+                        }),
+                        _vm._v(" "),
                         _c(
                           "a",
                           {
@@ -46438,6 +46443,10 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-6 border-line-right" }, [
+                        _c("img", {
+                          attrs: { src: "images/" + _vm.menteeLink }
+                        }),
+                        _vm._v(" "),
                         _c(
                           "a",
                           {
@@ -47945,7 +47954,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //

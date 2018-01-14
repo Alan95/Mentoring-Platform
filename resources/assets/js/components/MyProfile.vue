@@ -61,8 +61,7 @@
                             <div v-else>
                                 <img :src="image" />
                                 <button @click="removeImage" class="button_myprofile btn-block btn-xs">Change Avatar</button>
-                            </div>
-                        
+                            </div> 
                     </div>
                     <div class="row">
                         <button @click="saveSettings" class="button_myprofile btn-block btn-xs saveSettings">Save settings</button>
