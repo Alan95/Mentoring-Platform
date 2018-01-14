@@ -46344,7 +46344,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_particles__["a" /* default */]);
     },
     data: function data() {
         return {
-            showCard: false
+            showCard: false,
+            image: ''
         };
     },
 
@@ -48020,27 +48021,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -48054,9 +48035,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             programmingLanguages: [{ name: 'Java', checked: false }, { name: 'PHP', checked: false }, { name: 'C++', checked: false }, { name: 'C#', checked: false }, { name: 'HTML', checked: false }, { name: 'SQL', checked: false }, { name: 'C', checked: false }, { name: 'Ruby', checked: false }],
             speakingLanguages: [{ name: 'English', checked: false }, { name: 'German', checked: false }, { name: 'French', checked: false }, { name: 'Chinese', checked: false }, { name: 'Russian', checked: false }, { name: 'Spanish', checked: false }],
+            numberOfmentees: [{ name: 'One', checked: false }, { name: 'Two', checked: false }, { name: 'Three', checked: false }, { name: 'Four', checked: false }, { name: 'Five', checked: false }, { name: 'Six', checked: false }, { name: 'Seven', checked: false }, { name: 'Eight', checked: false }],
             editedUser: {
                 programmingLanguages: []
-            }
+            },
+            image: ''
         };
     },
     created: function created() {},
@@ -48068,9 +48051,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('/api/language').then(function (response) {
                 _this.languages = response.data.programming_languages;
             });
+        },
+        onFileChange: function onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length) return;
+            this.createImage(files[0]);
+        },
+        createImage: function createImage(file) {
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+
+            reader.onload = function (e) {
+                vm.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+
+        removeImage: function removeImage(e) {
+            this.image = '';
         }
     }
-
 });
 
 /***/ }),
@@ -48088,11 +48089,60 @@ var render = function() {
       staticStyle: { "background-color": "transparent !important" }
     },
     [
-      _c("h1", [_vm._v(_vm._s(_vm.user.email))]),
-      _vm._v(" "),
       _c("div", { staticClass: "container myProfile" }, [
         _c("div", { staticClass: "row" }, [
-          _vm._m(0),
+          _c("div", { staticClass: "col-md-3" }, [
+            _c("label", { staticClass: "myProfile_label" }, [
+              _vm._v("Firstname")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input_myprofile",
+              attrs: { type: "text" }
+            }),
+            _vm._v(" "),
+            _c("label", { staticClass: "myProfile_label" }, [
+              _vm._v("Lastname")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input_myprofile",
+              attrs: { type: "text" }
+            }),
+            _vm._v(" "),
+            _c("label", { staticClass: "myProfile_label" }, [
+              _vm._v("Username")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input_myprofile",
+              attrs: { type: "text", readonly: "" },
+              domProps: { value: _vm.user.username }
+            }),
+            _vm._v(" "),
+            _c("label", { staticClass: "myProfile_label" }, [_vm._v("Email")]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input_myprofile",
+              attrs: { type: "text" },
+              domProps: { value: _vm.user.email }
+            }),
+            _vm._v(" "),
+            _c("label", { staticClass: "myProfile_label" }, [
+              _vm._v("Password")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "input_myprofile",
+              attrs: { type: "text" },
+              domProps: { value: _vm.user.password }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "button_myprofile btn-block btn-xs",
+              attrs: { type: "button", value: "Change Password" }
+            })
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-3" }, [
             _c("label", { staticClass: "myProfile_label" }, [
@@ -48119,6 +48169,7 @@ var render = function() {
                             expression: "programmingLanguage.checked"
                           }
                         ],
+                        staticClass: "myProfile_label",
                         attrs: {
                           type: "checkbox",
                           value: "programmingLanguage.checked"
@@ -48227,133 +48278,124 @@ var render = function() {
                   })
                 )
               ])
+            ]),
+            _vm._v(" "),
+            _c("label", { staticClass: "myProfile_label" }, [
+              _vm._v("I have place for...mentees")
+            ]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table table-stripped" }, [
+              _c("thead"),
+              _vm._v(" "),
+              _c("tbody", [
+                _c(
+                  "tr",
+                  _vm._l(_vm.numberOfmentees, function(numberOfMentee, ind) {
+                    return _c("td", [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: numberOfMentee.checked,
+                            expression: "numberOfMentee.checked"
+                          }
+                        ],
+                        attrs: {
+                          type: "checkbox",
+                          value: "numberOfMentee.checked"
+                        },
+                        domProps: {
+                          checked: Array.isArray(numberOfMentee.checked)
+                            ? _vm._i(
+                                numberOfMentee.checked,
+                                "numberOfMentee.checked"
+                              ) > -1
+                            : numberOfMentee.checked
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = numberOfMentee.checked,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "numberOfMentee.checked",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  (numberOfMentee.checked = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (numberOfMentee.checked = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.$set(numberOfMentee, "checked", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(_vm._s(numberOfMentee.name))
+                    ])
+                  })
+                )
+              ])
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1),
+          _c("div", { staticClass: "col-md-3" }),
           _vm._v(" "),
-          _vm._m(2)
+          _c(
+            "div",
+            { staticClass: "col-md-3", staticStyle: { position: "relativ" } },
+            [
+              _c("div", { staticClass: "row avatarBox" }, [
+                !_vm.image
+                  ? _c("div", [
+                      _c("p", { staticClass: "label" }, [
+                        _vm._v("Upload your Avatar")
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        staticClass: "button_myprofile btn-block btn-xs",
+                        attrs: { type: "file" },
+                        on: { change: _vm.onFileChange }
+                      })
+                    ])
+                  : _c("div", [
+                      _c("img", { attrs: { src: _vm.image } }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "button_myprofile btn-block btn-xs",
+                          on: { click: _vm.removeImage }
+                        },
+                        [_vm._v("Change Avatar")]
+                      )
+                    ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "button_myprofile btn-block btn-xs saveSettings",
+                    on: { click: _vm.saveSettings }
+                  },
+                  [_vm._v("Save settings")]
+                )
+              ])
+            ]
+          )
         ])
       ])
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Firstname")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Lastname")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Username")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Email")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "input_myprofile",
-        attrs: { type: "text", value: "{{", "user.email": "", "}}": "" }
-      }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Password")]),
-      _vm._v(" "),
-      _c("input", { staticClass: "input_myprofile", attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "button_myprofile btn-block btn-xs",
-        attrs: { type: "button", value: "Change Password" }
-      }),
-      _vm._v(" "),
-      _c("label", { staticClass: "myProfile_label" }, [_vm._v("Hometown")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("label", { staticClass: "myProfile_label" }, [
-        _vm._v("How many mentees?")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between" }, [
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("input", { attrs: { type: "checkbox" } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between" }, [
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 col-offset-6" }, [
-          _c("input", { attrs: { type: "checkbox" } })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between" }, [
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("i", {
-            staticClass: "fa fa-user-plus",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3" }, [
-          _c("input", { attrs: { type: "checkbox" } })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("h1", [_vm._v("trying to upload avatar, not working just yet")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

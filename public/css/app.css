@@ -13097,3 +13097,29 @@ input::placeholder {
   height: 50px;
 }
 
+.myProfile .table th,
+.myProfile .table td {
+  color: white;
+}
+
+.myProfile img {
+  width: 100%;
+  margin: auto;
+  display: block;
+  margin-bottom: 10px;
+  border: 10px;
+}
+
+.myProfile .avatarBox {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.myProfile .saveSettings {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+

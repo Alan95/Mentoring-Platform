@@ -39,10 +39,12 @@
         },
         data() {
             return{
-                showCard: false
+                showCard: false,
+                image: ''
             }
         },
         methods: {
+
         }
     }
 </script>
