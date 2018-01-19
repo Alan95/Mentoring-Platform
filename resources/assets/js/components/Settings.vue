@@ -5,36 +5,38 @@
             <div class="row">
                 <div class="col-md-3">
                     <label class="myProfile_label">Firstname</label>
-                    <input type="text" class="input_myprofile">
+                    <input type="text" class="input_myprofile" v-model="user.firstName">
                     <label class="myProfile_label">Lastname</label>
-                    <input type="text" class="input_myprofile">
+                    <input type="text" class="input_myprofile" v-model="editedUser.lastName">
                     <label class="myProfile_label">Username</label>
                     <input type="text" class="input_myprofile" :value="user.username" readonly>
                     <label class="myProfile_label">Email</label>
                     <input type="text" class="input_myprofile" :value="user.email">
                     <label class="myProfile_label">Password</label>
-                    <input type="text" class="input_myprofile" :value="user.password">
+                    <input type="password" class="input_myprofile" :value='user.password'>
                     <input type="button" class="button_myprofile btn-block btn-xs" value="Change Password">
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <label class=myProfile_label>Programming languages</label>
                     <table class="table table-stripped">
                         <thead>
                         </thead>
                         <tbody>
                             <tr>
-                                <td v-for="(programmingLanguage, ind) in programmingLanguages"><input type="checkbox" class="myProfile_label" value="programmingLanguage.checked" v-model="programmingLanguage.checked">{{ programmingLanguage.name }}</td>
+                                <td v-for="programmingLanguage in programmingLanguages"><input type="checkbox" :id="programmingLanguage.name" :value="programmingLanguage.name" v-model="selectedProgrammingLanguages" @click="arrayOfCheckedProgrammingLanguages($event)">{{ programmingLanguage.name }}</td>
                             </tr>
+                           <div>{{selectedProgrammingLanguages}}</div>
                         </tbody>
                     </table>
                     <label class=myProfile_label>Spoken languages</label>
-                    <table class="table table-stripped">
+                   <table class="table table-stripped">
                         <thead>
                         </thead>
                         <tbody>
                             <tr>
-                                <td v-for="(speakingLanguage, ind) in speakingLanguages"><input type="checkbox" value="speakingLanguage.checked" v-model="speakingLanguage.checked">{{ speakingLanguage.name }}</td>
+                                <td v-for="speakingLanguage in speakingLanguages"><input type="checkbox" :id="speakingLanguage.name" :value="speakingLanguage.name" v-model="selectedSpeakingLanguages" @click="arrayOfCheckedSpeakingLanguages">{{ speakingLanguage.name }}</td>
                             </tr>
+                           <!-- <div>{{selectedSpeakingLanguages}}</div>-->
                         </tbody>
                     </table>
                     <label class=myProfile_label>I have place for...mentees</label>
@@ -43,13 +45,12 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td v-for="(numberOfMentee, ind) in numberOfmentees"><input type="checkbox" value="numberOfMentee.checked" v-model="numberOfMentee.checked">{{ numberOfMentee.name }}</td>
+                                <td v-for="(numberOfMentee, ind) in numberOfmentees"><input type="radio" :value="numberOfMentee" v-model="checkedNumberOfMentees">{{ numberOfMentee.name }}</td>
                             </tr>
+                            <!--<div>{{checkedNumberOfMentees.name}}</div>-->
                         </tbody>
                     </table>                      
 
-                </div>
-                <div class="col-md-3">                      
                 </div>
 
                 <div class="col-md-3" style="position:relativ">
@@ -64,7 +65,7 @@
                             </div> 
                     </div>
                     <div class="row">
-                        <button @click="saveSettings" class="button_myprofile btn-block btn-xs saveSettings">Save settings</button>
+                        <input @click="updateUser" class="button_myprofile btn-block btn-xs saveSettings" value="Save settings" />
                     </div>
                 </div>
             </div>
@@ -79,11 +80,20 @@
         mounted() {
             console.log('Component mounted.')
         },
-        props: ["user"],
+       props: ["user"],
         data() {
             return{
-                timeZoneVisible: false,
-
+                user: {
+                    firstname: '',
+                },
+                editedUser: {
+                    checkedSpeakingLanguages: [],
+                    checkedProgrammingLanguages: [],
+                    firstName: '',
+                    lastName: '',
+                    username: '',
+                    password: '',
+                },
                 programmingLanguages: [
                     {name: 'Java', checked: false},
                     {name: 'PHP', checked: false},
@@ -93,15 +103,17 @@
                     {name: 'SQL', checked: false},
                     {name: 'C', checked: false},
                     {name: 'Ruby', checked: false}
-                ],  
-                speakingLanguages: [
-                    {name: 'English', checked: false},
-                    {name: 'German', checked: false},
-                    {name: 'French', checked: false},
-                    {name: 'Chinese', checked: false},
-                    {name: 'Russian', checked: false},
-                    {name: 'Spanish', checked: false},
                 ],
+                checkedProgrammingLanguages: [], 
+                speakingLanguages: [
+                    {name: 'English'},
+                    {name: 'German'},
+                    {name: 'French'},
+                    {name: 'Chinese'},
+                    {name: 'Russian'},
+                    {name: 'Spanish'},               
+                ],
+                checkedSpeakingLanguages: [],
                 numberOfmentees:[
                     {name:'One', checked: false},
                     {name:'Two', checked: false},
@@ -112,10 +124,9 @@
                     {name:'Seven', checked: false},
                     {name:'Eight', checked: false},
 
-                ],      
-                editedUser: {
-                    programmingLanguages: []        
-                },
+                ], 
+                checkedNumberOfMentees: [],     
+
                 image: '',
             }
         },
@@ -146,8 +157,48 @@
             },
             removeImage: function (e) {
             this.image = '';
-    }
-        }
+            },   
+            arrayOfCheckedProgrammingLanguages: function(e) {
+                var self = this;
+                if (e.target.checked) {
+                self.checkedProgrammingLanguages.push(e.target.value);
+                }
+            },
+            arrayOfCheckedSpeakingLanguages: function(e) {
+                var self = this;
+                if (e.target.checked) {
+                self.checkedSpeakingLanguages.push(e.target.value);
+                }
+            },
+            /*showLog(){
+                var self = this;
+                var firstname = self.user.firstName;
+                var lastname = self.editedUser.lastName;
+                var email = self.user.email;
+                var password = self.user.password;
+                var programming_languages = self.checkedProgrammingLanguages;
+                var speaking_languages = self.checkedSpeakingLanguages; 
+                console.log(firstname, lastname, email, programming_languages, speaking_languages);
+            },*/
+            updateUser(){
+                var self = this;
+                axios.post(`/api/update`, {
+                        firstname: self.user.firstName,
+                        lastname: self.editedUser.lastName,
+                        email: self.user.email,
+                        password: self.user.password,
+                        programming_languages: self.checkedProgrammingLanguages,
+                        speaking_languages: self.checkedSpeakingLanguages,
+                    })
+                    .then(response => {
+                    alert("one step forward");
+                })
+                .catch(e => {
+                        alert('Error!')
+                        self.errors.push(e)
+                })
+            },                                  
+        },
     }        
     
 </script>
