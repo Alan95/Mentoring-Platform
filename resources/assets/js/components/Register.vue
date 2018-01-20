@@ -46,8 +46,8 @@
                 </div>
                 <hr class="horisontal_line">
                 <select v-model="user.registerType" class="form-control">
-                    <option value="mentor">Mentor</option>
-                    <option value="mentee">Mentee</option>
+                    <option  value="mentor">Mentor</option>
+                    <option  value="mentee">Mentee</option>
                 </select> 
                 <div class="g-recaptcha" data-sitekey="6Les2T4UAAAAAKTY_F0SjXtjfgrDbc8lwKLpLaoG"></div>
                 <br>
@@ -55,14 +55,18 @@
                 <p class="register_text">Do you already have an account?<br>
                 <a href="/login"><span class="login_label">Login here</span></a></p>
             </div>
+            <div class="form_wrapper">
+               <h3>Please, complete your profile </h3>
+            </div>
     </div>
 </template>
 
 <script>
     export default {
         mounted() {
-
+            this.user.registerType = this.type;
         },
+        props: ["type"],
         data(){
             return{
                 user: {
@@ -98,6 +102,9 @@
             },
             changePath(path){
                 document.location.href = location.protocol + '//' + location.host + path
+            },
+            showSection(section){
+                this.section = section;
             }
         }
     }

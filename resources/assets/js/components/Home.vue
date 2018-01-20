@@ -15,11 +15,11 @@
                         <div class="row">
                             <div class="col-6 border-line-left">
                                 <img v-bind:src="'images/' + mentorLink" /> 
-                                <a href="register" class="btn btn-violet btn-xs">Mentor</a>
+                                <a href="/register/mentor" class="btn btn-violet btn-xs">Mentor</a>
                             </div>
                             <div class="col-6 border-line-right">
                                 <img v-bind:src="'images/' + menteeLink" />
-                                <a href="/register" class="btn btn-violet btn-xs">Mentee</a>
+                                <a href="/register/mentee" class="btn btn-violet btn-xs">Mentee</a>
                             </div>    
                         </div>    
                     </div>    

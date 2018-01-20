@@ -15,9 +15,14 @@ use \Input as Input;
 
 class UserController extends BaseController
 {
-    public function showRegisterForm()
-    {
-        return view('register');
+    public function showRegisterForm($type = null)
+    { 
+        if($type){
+            return view('register')->with('type', $type);
+        } else {
+            return view('register');
+        }
+        
     }
 
     public function showLoginForm()
@@ -97,6 +102,11 @@ class UserController extends BaseController
     {
         $users = User::all();
         return response()->json($users);
+    }
+
+    public function showBackend()
+    {
+        return view('backend');
     }
     /*public function uploadAvatar()
     {

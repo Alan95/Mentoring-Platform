@@ -1,5 +1,5 @@
 <template>
-    <div class="jumbotron" style="background-color:transparent !important">
+    <div class="jumbotron">
         <div class="pull-right">
             <button v-if="me" @click="toggleEditable">Edit</button>
         </div>
@@ -157,7 +157,7 @@
                         speaking_languages: selectedSpeakingLanguages
                     })
                     .then(response => {
-                        alert("one step forward");
+                        alert("Your changes have been updated and saved ");
                         self.editable = false;
                     })
                     .catch(e => {

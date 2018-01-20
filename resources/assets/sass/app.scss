@@ -20,6 +20,7 @@ $box_shadow_color: #888888;
 $linear_gradient_color1: #ac4ddf;
 $linear_gradient_color2:rgb(100, 45, 133);
 $linear_gradient_color3:rgb(216, 132, 181);
+$black_color: black;
 
 html {
     height: 100%;
@@ -49,6 +50,7 @@ body{
         color: black;
         width: 30rem;
         margin: 10px auto 0;
+        margin-top:150px;
     }
 }
 
@@ -296,7 +298,7 @@ opacity: 0;
     label{
         margin: 0px;
         padding: 0px;
-        color: $title_color;
+        color: $background_color;
         font-size: 1.2em;
         display: block;
     }
@@ -331,7 +333,7 @@ opacity: 0;
       }
 
       .table th, .table td{
-          color: $title_color;
+          color: $black_color;
       }
 
       img {
