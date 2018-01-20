@@ -8,7 +8,7 @@
         
                         </div>
                         <div class="avatar">
-                            <img alt="" src="https://www.emetriq.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png">
+                            <img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR847W2CKaHWeekeI8jVGAr19XqgqLj-wSGRt74sLrOsGEu7LrY">
                         </div>
                         <div class="info">
                             <div class="title">
