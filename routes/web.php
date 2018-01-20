@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/register', 'UserController@showRegisterForm');
 Route::post('/api/register', 'UserController@addNewUser');
+Route::post('/api/update', 'UserController@updateUser');
 
 Route::get('/login', 'UserController@showLoginForm');
 Route::post('/api/login', 'UserController@doLogin');
