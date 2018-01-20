@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('/register', 'UserController@showRegisterForm');
 Route::post('/api/register', 'UserController@addNewUser');
 Route::post('/api/update', 'UserController@updateUser');
+Route::get('/api/users', 'UserController@getAllUser');
 
 Route::get('/login', 'UserController@showLoginForm');
 Route::post('/api/login', 'UserController@getUserAndLogin');
@@ -27,7 +28,7 @@ Route::get('logout', 'UserController@loggingOut');
 
 Route::get('/profile', 'ProfileController@showProfilePage')->name('profile');
 
-Route::get('/api/user', 'UserController@getUser');
+Route::get('/api/user', 'UserController@getMyUser');
 
 Route::post('uploadAvatar', 'UserController@uploadAvatar');
 

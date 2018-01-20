@@ -8,7 +8,7 @@
         
                         </div>
                         <div class="avatar">
-                            <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                            <img alt="" src="https://www.emetriq.com/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png">
                         </div>
                         <div class="info">
                             <div class="title">
@@ -33,6 +33,10 @@
                             <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
                                 <i class="fa fa-behance"></i>
                             </a>
+                            <template v-if="!me">
+                                <button>Chat Now</button>
+                                <button>Send Friend Request</button>
+                            </template>
                         </div>
                     </div>
         
@@ -46,9 +50,9 @@
 <script>
     export default {
         mounted() {
-            console.log('Component mounted.')
+
         },
-        props: ["user"],
+        props: ["user", "me"],
         data() {
             return{
                 showCard: false

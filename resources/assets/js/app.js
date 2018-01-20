@@ -26,7 +26,6 @@ Vue.component('register', require('./components/Register.vue'));
 Vue.component('login', require('./components/Login.vue'));
 Vue.component('profile', require('./components/Profile.vue'));
 Vue.component('chat', require('./components/Chat.vue'));
-Vue.component('settings', require('./components/Settings.vue'));
 Vue.component('profilecard', require('./components/ProfileCard.vue'));
 
 const app = new Vue({

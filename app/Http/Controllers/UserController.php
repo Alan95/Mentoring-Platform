@@ -47,7 +47,7 @@ class UserController extends BaseController
     {
         $user = Auth::user();
         if(!$user){
-            return response ('User not found', 404);
+            return response('User not found', 404);
         }else{
             $user->email = $request->email;
             $user->first_name = $request->firstname;
@@ -62,7 +62,7 @@ class UserController extends BaseController
 
     }  
 
-    public function doLogin(request $request)
+    public function doLogin(Request $request)
     {
               
         $email=$request->email;
@@ -86,14 +86,19 @@ class UserController extends BaseController
         return view('welcome');
     }
 
-    public function getUser()
+    public function getMyUser()
     {
         if(Auth::user()){
             return response()->json(Auth::user());
         } 
     }
 
-    public function uploadAvatar()
+    public function getAllUser()
+    {
+        $users = User::all();
+        return response()->json($users);
+    }
+    /*public function uploadAvatar()
     {
         if(Input::hasFile('file')){
 
@@ -101,7 +106,5 @@ class UserController extends BaseController
 			$file = Input::file('file');
 			$file->move('uploadAvatar', $file->getClientOriginalName());
 			echo '';
-    }
-
-    }
+    }*/
 }

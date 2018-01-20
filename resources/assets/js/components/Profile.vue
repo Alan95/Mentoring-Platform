@@ -8,7 +8,7 @@
                 <a class="nav-link" href="#" @click="showSection('dashboard')">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" @click="showSection('profilecard')">Me</a>
+                <a class="nav-link" href="#" @click="showSection('user')">Me</a>
             </li>
             <li class="nav-item" v-if="user.registerType">
                 <a class="nav-link" href="#" @click="showSection('list')">Search Mentee</a>
@@ -20,10 +20,7 @@
                 <a class="nav-link" href="#" @click="showSection('chats')">Chats</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" @click="showSection('settings')">Settings</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" @click="logout">Logout</a>
+                <a class="nav-link" href="/logout" >Logout</a>
             </li>
         </ul>
         <br>
@@ -39,11 +36,8 @@
             </div> 
                   
         </div> 
-        <div v-else-if="section == 'settings'">
-            <settings :user="user"> </settings>
-        </div> 
-        <div v-else-if="section == 'profilecard'">
-            <profilecard :user="user"> </profilecard>
+        <div v-else-if="section == 'user'">
+            <user :user="user" :me="true"> </user>
         </div>    
         <div v-else-if="section == 'list'">
             <list></list>
@@ -67,7 +61,7 @@
 <script>
     import Chat from './Chat.vue';
     import List from './List.vue';
-    import ProfileCard from './ProfileCard.vue';
+    import User from './User.vue';
 
     export default {
         mounted() {
@@ -77,7 +71,7 @@
         components:{
          'chat': Chat,
          'list': List,
-         'profilecard': ProfileCard,
+         'user': User
         },
         data(){
             return{

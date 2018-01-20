@@ -2,28 +2,48 @@
     <div class="jumbotron">
         <h2>Search for a </h2>
         <input class="col-5"/>
-        <button>Search</button>
+        <button class="btn btn-primary">Search</button>
         <br>
         <ul class="list-group">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            <li v-for="user in users">
+                <a @click="openModal"><profilecard :user="user"></profilecard></a>
+            </li>
         </ul>
-    </div>        
+    </div>
 </template>
 <script>
+    import ProfileCard from './ProfileCard.vue';
+    import User from './User.vue';
+
     export default {
         mounted() {
             console.log('Component mounted.')
+            this.getAllUsers();
+        },
+        components:{
+            'user': User
         },
         data() {
             return{
-                showCard: false
+                showCard: false,
+                users: null,
+                errors: [],
             }
         },
         methods: {
+            getAllUsers() {
+                var self = this;
+                axios.get('/api/users')
+                    .then(response => {
+                        self.users = response.data;
+                    })
+                    .catch(e => {
+                        self.errors.push(e)
+                })
+            },
+            openModal(){
+
+            }
         }
     }
 </script>    

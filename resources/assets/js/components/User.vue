@@ -1,0 +1,168 @@
+<template>
+    <div class="jumbotron" style="background-color:transparent !important">
+        <div class="pull-right">
+            <button v-if="me" @click="toggleEditable">Edit</button>
+        </div>
+        <div class="container myProfile">
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="myProfile_label">Firstname</label>
+                    <input v-if="editable" type="text" class="input_myprofile" v-model="user.firstName"><span v-else>{{ user.firstName }}</span>
+                    <label class="myProfile_label">Lastname</label>
+                    <input v-if="editable" type="text" class="input_myprofile" v-model="user.lastName"><span v-else>{{ user.lastName }}</span>
+                    <label class="myProfile_label">Username</label>
+                    <input v-if="editable" type="text" class="input_myprofile" :value="user.username" readonly><span v-else>{{ user.userName }}</span>
+                    <label class="myProfile_label">Email</label>
+                    <input v-if="editable"type="text" class="input_myprofile" :value="user.email"><span v-else>{{ user.email }}</span>
+                    <label class="myProfile_label">Password</label>
+                    <input v-if="editable" type="password" class="input_myprofile" :value='user.password'><span v-else>{{ user.password }}</span>
+                </div>
+                <div class="col-md-6">
+                    <label class=myProfile_label>Programming languages</label>
+                    <table class="table table-stripped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td v-if="editable" v-for="programmingLanguage in programmingLanguages">
+                                    <input type="checkbox" :id="programmingLanguage.name" :value="programmingLanguage.name" v-model="programmingLanguage.checked">{{ programmingLanguage.name }}
+                                </td>
+                                <td v-else>
+                                    {{ programmingLanguage.name }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <label class=myProfile_label>Spoken languages</label>
+                    <table class="table table-stripped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td v-if="editable" v-for="speakingLanguage in speakingLanguages">
+                                    <input v-if="editable" type="checkbox" :id="speakingLanguage.name" :value="speakingLanguage.name" v-model="speakingLanguage.checked">{{ speakingLanguage.name }}
+                                </td>
+                                <td v-else>
+                                    {{ speakingLanguage.name }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <template v-if="user.is_a_mentor">
+                        <label class=myProfile_label>I have place for...mentees</label>
+                        <input v-if="editable" type="number" v-model="numberOfMentees"><span v-else v-if="numberOfMentees !== null">{{ numberOfMentees }}</span>
+                    </template>
+                </div>
+                <div v-if="editable" class="col-md-3" style="position:relativ">
+                    <div class="row avatarBox">
+                        <div v-if="!image">
+                            <p class="label">Upload your Avatar</p>
+                            <input type="file" class="button_myprofile btn-block btn-xs" @change="onFileChange">
+                        </div>
+                        <div v-else>
+                            <img :src="image" />
+                            <button @click="removeImage" class="button_myprofile btn-block btn-xs">Change Avatar</button>
+                        </div>
+                    </div>
+                    <div class="row" v-if="editable">
+                        <input @click="updateUser" class="button_myprofile btn-block btn-xs saveSettings" value="Save settings" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+
+<script>
+    export default {
+        mounted() {
+
+        },
+        props: ["user", "me"],
+        data() {
+            return{
+                showCard: false,
+                editable: false,
+                programmingLanguages: [
+                    {name: 'Java', checked: false},
+                    {name: 'PHP', checked: false},
+                    {name: 'C++', checked: false},
+                    {name: 'C#', checked: false},
+                    {name: 'HTML', checked: false},
+                    {name: 'SQL', checked: false},
+                    {name: 'C', checked: false},
+                    {name: 'Ruby', checked: false}
+                ],
+                speakingLanguages: [
+                    {name: 'English', checked: false},
+                    {name: 'German', checked: false},
+                    {name: 'French', checked: false},
+                    {name: 'Chinese', checked: false},
+                    {name: 'Russian', checked: false},
+                    {name: 'Spanish', checked: false},
+                ],
+                numberOfMentees: null,
+                image: '',
+            }
+        },
+        methods: {
+                toggleEditable(){
+                    this.editable = !this.editable;
+                },
+                getLanguage(){
+                    axios.get('/api/language')
+                        .then( response =>
+                        { this.languages = response.data.programming_languages })
+                },
+                onFileChange(e) {
+                    var files = e.target.files || e.dataTransfer.files;
+                    if (!files.length)
+                        return;
+                    this.createImage(files[0]);
+                },
+                createImage(file) {
+                    var image = new Image();
+                    var reader = new FileReader();
+                    var vm = this;
+
+                    reader.onload = (e) => {
+                        vm.image = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                },
+                removeImage: function (e) {
+                    this.image = '';
+                },
+                /*showLog(){
+                    var self = this;
+                    var firstname = self.user.firstName;
+                    var lastname = self.editedUser.lastName;
+                    var email = self.user.email;
+                    var password = self.user.password;
+                    var programming_languages = self.checkedProgrammingLanguages;
+                    var speaking_languages = self.checkedSpeakingLanguages;
+                    console.log(firstname, lastname, email, programming_languages, speaking_languages);
+                },*/
+                updateUser(){
+                    var self = this;
+                    axios.post(`/api/update`, {
+                        firstname: self.user.firstName,
+                        lastname: self.user.lastName,
+                        email: self.user.email,
+                        password: self.user.password,
+                        programming_languages: self.programmingLanguages,
+                        speaking_languages: self.speakingLanguages,
+                    })
+                    .then(response => {
+                        alert("one step forward");
+                    })
+                    .catch(e => {
+                        alert('Error!')
+                        self.errors.push(e)
+                    })
+                }
+         }
+
+    }
+</script>
