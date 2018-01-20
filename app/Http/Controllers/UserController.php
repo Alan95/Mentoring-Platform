@@ -43,7 +43,26 @@ class UserController extends BaseController
         return response(200);
     }
 
-    public function getUserAndLogin(request $request)
+    public function updateUser(Request $request)
+    {
+        $user = Auth::user();
+        if(!$user){
+            return response ('User not found', 404);
+        }else{
+            $user->email = $request->email;
+            $user->first_name = $request->firstname;
+            $user->last_name = $request->lastname;
+            $user->email = $request->email;
+            $user->programming_languages = json_encode($request->programming_languages);
+            $user->speaking_languages = json_encode($request->speaking_languages);
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+        return response(200);
+
+    }  
+
+    public function doLogin(request $request)
     {
               
         $email=$request->email;
