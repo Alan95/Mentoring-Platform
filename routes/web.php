@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/register', 'UserController@showRegisterForm');
 Route::post('/api/register', 'UserController@addNewUser');
-Route::post('/api/update', 'UserController@updateUser');
+Route::post('/api/update/user', 'UserController@updateUser');
 Route::get('/api/users', 'UserController@getAllUser');
 
 Route::get('/login', 'UserController@showLoginForm');

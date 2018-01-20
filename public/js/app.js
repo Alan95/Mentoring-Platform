@@ -49911,16 +49911,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         getUser: function getUser() {
-            var _this = this;
-
             var self = this;
             axios.get('/api/user').then(function (response) {
-                self.user.username = response.data.username;
-                self.user.email = response.data.email;
-                self.user.registerType = response.data.registerType;
+                self.user = response.data;
+                console.log(self.user);
             }).catch(function (e) {
                 self.errors.push(e);
-                console.log(_this.e);
             });
         },
         showSection: function showSection(section) {
@@ -50619,7 +50615,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             programmingLanguages: [{ name: 'Java', checked: false }, { name: 'PHP', checked: false }, { name: 'C++', checked: false }, { name: 'C#', checked: false }, { name: 'HTML', checked: false }, { name: 'SQL', checked: false }, { name: 'C', checked: false }, { name: 'Ruby', checked: false }],
             speakingLanguages: [{ name: 'English', checked: false }, { name: 'German', checked: false }, { name: 'French', checked: false }, { name: 'Chinese', checked: false }, { name: 'Russian', checked: false }, { name: 'Spanish', checked: false }],
             numberOfMentees: null,
-            image: ''
+            image: '',
+            errors: []
         };
     },
 
@@ -50665,15 +50662,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },*/
         updateUser: function updateUser() {
             var self = this;
-            axios.post("/api/update", {
-                firstname: self.user.firstName,
-                lastname: self.user.lastName,
+            var selectedProgrammingLanguages = self.programmingLanguages.filter(function (language) {
+                return language.checked;
+            });
+
+            var selectedSpeakingLanguages = self.speakingLanguages.filter(function (language) {
+                return language.checked;
+            });
+            axios.post("/api/update/user", {
+                firstname: self.user.first_name,
+                lastname: self.user.last_name,
                 email: self.user.email,
                 password: self.user.password,
-                programming_languages: self.programmingLanguages,
-                speaking_languages: self.speakingLanguages
+                programming_languages: selectedProgrammingLanguages,
+                speaking_languages: selectedSpeakingLanguages
             }).then(function (response) {
                 alert("one step forward");
+                self.editable = false;
             }).catch(function (e) {
                 alert('Error!');
                 self.errors.push(e);
@@ -50719,23 +50724,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.user.firstName,
-                      expression: "user.firstName"
+                      value: _vm.user.first_name,
+                      expression: "user.first_name"
                     }
                   ],
                   staticClass: "input_myprofile",
                   attrs: { type: "text" },
-                  domProps: { value: _vm.user.firstName },
+                  domProps: { value: _vm.user.first_name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.user, "firstName", $event.target.value)
+                      _vm.$set(_vm.user, "first_name", $event.target.value)
                     }
                   }
                 })
-              : _c("span", [_vm._v(_vm._s(_vm.user.firstName))]),
+              : _c("span", [_vm._v(_vm._s(_vm.user.first_name))]),
             _vm._v(" "),
             _c("label", { staticClass: "myProfile_label" }, [
               _vm._v("Lastname")
@@ -50747,23 +50752,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.user.lastName,
-                      expression: "user.lastName"
+                      value: _vm.user.last_name,
+                      expression: "user.last_name"
                     }
                   ],
                   staticClass: "input_myprofile",
                   attrs: { type: "text" },
-                  domProps: { value: _vm.user.lastName },
+                  domProps: { value: _vm.user.last_name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.user, "lastName", $event.target.value)
+                      _vm.$set(_vm.user, "last_name", $event.target.value)
                     }
                   }
                 })
-              : _c("span", [_vm._v(_vm._s(_vm.user.lastName))]),
+              : _c("span", [_vm._v(_vm._s(_vm.user.last_name))]),
             _vm._v(" "),
             _c("label", { staticClass: "myProfile_label" }, [
               _vm._v("Username")
@@ -50775,7 +50780,7 @@ var render = function() {
                   attrs: { type: "text", readonly: "" },
                   domProps: { value: _vm.user.username }
                 })
-              : _c("span", [_vm._v(_vm._s(_vm.user.userName))]),
+              : _c("span", [_vm._v(_vm._s(_vm.user.username))]),
             _vm._v(" "),
             _c("label", { staticClass: "myProfile_label" }, [_vm._v("Email")]),
             _vm._v(" "),
@@ -51052,12 +51057,15 @@ var render = function() {
                   _vm._v(" "),
                   _vm.editable
                     ? _c("div", { staticClass: "row" }, [
-                        _c("input", {
-                          staticClass:
-                            "button_myprofile btn-block btn-xs saveSettings",
-                          attrs: { value: "Save settings" },
-                          on: { click: _vm.updateUser }
-                        })
+                        _c(
+                          "button",
+                          {
+                            staticClass:
+                              "button_myprofile btn-block btn-xs saveSettings",
+                            on: { click: _vm.updateUser }
+                          },
+                          [_vm._v("Save Changes")]
+                        )
                       ])
                     : _vm._e()
                 ]

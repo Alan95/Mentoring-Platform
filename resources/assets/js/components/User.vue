@@ -7,11 +7,11 @@
             <div class="row">
                 <div class="col-md-3">
                     <label class="myProfile_label">Firstname</label>
-                    <input v-if="editable" type="text" class="input_myprofile" v-model="user.firstName"><span v-else>{{ user.firstName }}</span>
+                    <input v-if="editable" type="text" class="input_myprofile" v-model="user.first_name"><span v-else>{{ user.first_name }}</span>
                     <label class="myProfile_label">Lastname</label>
-                    <input v-if="editable" type="text" class="input_myprofile" v-model="user.lastName"><span v-else>{{ user.lastName }}</span>
+                    <input v-if="editable" type="text" class="input_myprofile" v-model="user.last_name"><span v-else>{{ user.last_name }}</span>
                     <label class="myProfile_label">Username</label>
-                    <input v-if="editable" type="text" class="input_myprofile" :value="user.username" readonly><span v-else>{{ user.userName }}</span>
+                    <input v-if="editable" type="text" class="input_myprofile" :value="user.username" readonly><span v-else>{{ user.username }}</span>
                     <label class="myProfile_label">Email</label>
                     <input v-if="editable"type="text" class="input_myprofile" :value="user.email"><span v-else>{{ user.email }}</span>
                     <label class="myProfile_label">Password</label>
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="row" v-if="editable">
-                        <input @click="updateUser" class="button_myprofile btn-block btn-xs saveSettings" value="Save settings" />
+                        <button @click="updateUser" class="button_myprofile btn-block btn-xs saveSettings">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -77,7 +77,6 @@
 <script>
     export default {
         mounted() {
-
         },
         props: ["user", "me"],
         data() {
@@ -104,16 +103,12 @@
                 ],
                 numberOfMentees: null,
                 image: '',
+                errors: []
             }
         },
         methods: {
                 toggleEditable(){
                     this.editable = !this.editable;
-                },
-                getLanguage(){
-                    axios.get('/api/language')
-                        .then( response =>
-                        { this.languages = response.data.programming_languages })
                 },
                 onFileChange(e) {
                     var files = e.target.files || e.dataTransfer.files;
@@ -144,18 +139,26 @@
                     var speaking_languages = self.checkedSpeakingLanguages;
                     console.log(firstname, lastname, email, programming_languages, speaking_languages);
                 },*/
-                updateUser(){
+                updateUser() {
                     var self = this;
-                    axios.post(`/api/update`, {
-                        firstname: self.user.firstName,
-                        lastname: self.user.lastName,
+                    var selectedProgrammingLanguages = self.programmingLanguages.filter(language => {
+                        return language.checked
+                    });
+
+                    var selectedSpeakingLanguages = self.speakingLanguages.filter(language => {
+                        return language.checked
+                    });
+                    axios.post(`/api/update/user`, {
+                        firstname: self.user.first_name,
+                        lastname: self.user.last_name,
                         email: self.user.email,
                         password: self.user.password,
-                        programming_languages: self.programmingLanguages,
-                        speaking_languages: self.speakingLanguages,
+                        programming_languages: selectedProgrammingLanguages,
+                        speaking_languages: selectedSpeakingLanguages
                     })
                     .then(response => {
                         alert("one step forward");
+                        self.editable = false;
                     })
                     .catch(e => {
                         alert('Error!')

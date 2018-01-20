@@ -89,13 +89,11 @@
                 var self = this;
                 axios.get('/api/user')
                 .then(response => { 
-                    self.user.username = response.data.username;
-                    self.user.email = response.data.email;
-                    self.user.registerType = response.data.registerType;
+                    self.user = response.data;
+                    console.log(self.user);
                 })
                 .catch(e => { 
                     self.errors.push(e)
-                    console.log(this.e);
                 })
             },
             showSection(section){
