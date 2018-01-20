@@ -48918,7 +48918,7 @@ var render = function() {
                           "a",
                           {
                             staticClass: "btn btn-violet btn-xs",
-                            attrs: { href: "register" }
+                            attrs: { href: "/register" }
                           },
                           [_vm._v("Mentor")]
                         )
@@ -49494,8 +49494,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         doLogin: function doLogin() {
             var self = this;
             if (self.user.password !== '') {
-                console.log(self.user.password);
-                console.log(self.user.email);
                 axios.post('/api/login', {
                     email: self.user.email,
                     password: self.user.password
@@ -49821,8 +49819,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         showSection: function showSection(section) {
             this.section = section;
-        },
-        logout: function logout() {}
+        }
     }
 });
 
@@ -50302,35 +50299,35 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("li", { staticClass: "nav-item" }, [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: { href: "#" },
-            on: { click: _vm.logout }
-          },
-          [_vm._v("Logout")]
-        )
-      ])
+      _vm._m(0)
     ]),
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
     _vm.section == "dashboard"
-      ? _c("div", [_vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2)])
+      ? _c("div", [_vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)])
       : _vm.section == "my-profile"
         ? _c("div", [_c("myprofile")], 1)
         : _vm.section == "list"
           ? _c("div", [_c("list")], 1)
           : _vm.section == "chats"
-            ? _c("div", [_vm._m(3)])
-            : _c("div", [_vm._m(4)]),
+            ? _c("div", [_vm._m(4)])
+            : _c("div", [_vm._m(5)]),
     _vm._v(" "),
     _c("div", { staticClass: "bottom" }, [_c("chat")], 1)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c("a", { staticClass: "nav-link", attrs: { href: "/logout" } }, [
+        _vm._v("Logout")
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

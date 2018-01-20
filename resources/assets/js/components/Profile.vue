@@ -20,7 +20,7 @@
                 <a class="nav-link" href="#" @click="showSection('chats')">Chats</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" @click="logout">Logout</a>
+                <a class="nav-link" href="/logout">Logout</a>
             </li>
         </ul>
         <br>
@@ -98,9 +98,6 @@
             },
             showSection(section){
                 this.section = section;
-            },
-            logout(){
-
             }
         }
     }

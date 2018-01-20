@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-6 border-line-left">
                                 <!--Todo: Adding Mentoricon-->
-                                <a href="register" class="btn btn-violet btn-xs">Mentor</a>
+                                <a href="/register" class="btn btn-violet btn-xs">Mentor</a>
                             </div>
                             <div class="col-6 border-line-right">
                                 <!--Todo: Adding Menteeicon-->

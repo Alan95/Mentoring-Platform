@@ -43,7 +43,7 @@ class UserController extends BaseController
         return response(200);
     }
 
-    public function doLogin(request $request)
+    public function getUserAndLogin(request $request)
     {
               
         $email=$request->email;
@@ -56,6 +56,15 @@ class UserController extends BaseController
     private function loginUser($user)
     {
         Auth::login($user);
+    }
+
+    public function loggingOut()
+    {
+        if(Auth::check()) {
+            Auth::logout();
+        }
+
+        return view('welcome');
     }
 
     public function getUser()

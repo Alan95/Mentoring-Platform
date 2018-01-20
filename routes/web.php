@@ -21,7 +21,8 @@ Route::get('/register', 'UserController@showRegisterForm');
 Route::post('/api/register', 'UserController@addNewUser');
 
 Route::get('/login', 'UserController@showLoginForm');
-Route::post('/api/login', 'UserController@doLogin');
+Route::post('/api/login', 'UserController@getUserAndLogin');
+Route::get('logout', 'UserController@loggingOut');
 
 Route::get('/profile', 'ProfileController@showProfilePage')->name('profile');
 

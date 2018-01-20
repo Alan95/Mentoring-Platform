@@ -53,8 +53,6 @@
             doLogin(){
                 var self = this;
                 if(self.user.password !== ''){
-                    console.log(self.user.password)
-                    console.log(self.user.email)
                     axios.post(`/api/login`, {
                         email: self.user.email,
                         password: self.user.password,
