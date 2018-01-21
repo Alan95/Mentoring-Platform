@@ -41,6 +41,8 @@ class UserController extends BaseController
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
+        $user->programming_languages = json_encode($request->programming_languages);
+        $user->speaking_languages = json_encode($request->speaking_languages);
         $request->registerType === 'mentor' ? $user->is_a_mentor = true: $user->is_a_mentor = false;
         $user->is_admin = false;
         $user->save();

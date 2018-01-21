@@ -46659,6 +46659,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -46673,21 +46696,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 email: '',
                 password: '',
                 confirmedPassword: '',
-                registerType: ''
+                registerType: '',
+                programming_languages: [],
+                selectedProgrammingLanguages: []
             },
-            errors: []
+            errors: [],
+            programmingLanguages: [{ name: 'Java', checked: false }, { name: 'PHP', checked: false }, { name: 'C++', checked: false }, { name: 'C#', checked: false }, { name: 'HTML', checked: false }, { name: 'Ruby', checked: false }, { name: 'SQL', checked: false }, { name: 'C', checked: false }],
+            speakingLanguages: [{ name: 'English', checked: false }, { name: 'German', checked: false }, { name: 'French', checked: false }, { name: 'Chinese', checked: false }, { name: 'Russian', checked: false }, { name: 'Spanish', checked: false }]
         };
     },
 
     methods: {
         registerUser: function registerUser() {
             var self = this;
+            var selectedProgrammingLanguages = self.programmingLanguages.filter(function (language) {
+                return language.checked;
+            });
+            var selectedSpeakingLanguages = self.speakingLanguages.filter(function (language) {
+                return language.checked;
+            });
             if (self.user.password == self.user.confirmedPassword) {
                 axios.post('/api/register', {
                     username: self.user.username,
                     email: self.user.email,
                     password: self.user.password,
-                    registerType: self.user.registerType
+                    registerType: self.user.registerType,
+                    programming_languages: selectedProgrammingLanguages,
+                    speaking_languages: selectedSpeakingLanguages
+
                 }).then(function (response) {
                     self.changePath('/profile');
                 }).catch(function (e) {
@@ -46718,181 +46754,305 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "form_wrapper" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.username,
-                expression: "user.username"
-              }
-            ],
-            staticClass: "form-control-plaintext",
-            attrs: { type: "text", placeholder: "Username*" },
-            domProps: { value: _vm.user.username },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: " col-md-6 form_wrapper" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-8" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.user.username,
+                  expression: "user.username"
                 }
-                _vm.$set(_vm.user, "username", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(1)
-      ]),
-      _vm._v(" "),
-      _c("hr", { staticClass: "horisontal_line" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.email,
-                expression: "user.email"
-              }
-            ],
-            staticClass: "form-control-plaintext",
-            attrs: { type: "email", placeholder: "Email*" },
-            domProps: { value: _vm.user.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+              ],
+              staticClass: "form-control-plaintext",
+              attrs: { type: "text", placeholder: "Username*" },
+              domProps: { value: _vm.user.username },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.user, "username", $event.target.value)
                 }
-                _vm.$set(_vm.user, "email", $event.target.value)
               }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(2)
-      ]),
-      _vm._v(" "),
-      _c("hr", { staticClass: "horisontal_line" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.password,
-                expression: "user.password"
-              }
-            ],
-            staticClass: "form-control-plaintext",
-            attrs: { type: "password", placeholder: "Password*" },
-            domProps: { value: _vm.user.password },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.user, "password", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(3)
-      ]),
-      _vm._v(" "),
-      _c("hr", { staticClass: "horisontal_line" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.user.confirmedPassword,
-                expression: "user.confirmedPassword"
-              }
-            ],
-            staticClass: "form-control-plaintext",
-            attrs: { type: "password", placeholder: "Confirm Password*" },
-            domProps: { value: _vm.user.confirmedPassword },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.user, "confirmedPassword", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _vm._m(4)
-      ]),
-      _vm._v(" "),
-      _c("hr", { staticClass: "horisontal_line" }),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.user.registerType,
-              expression: "user.registerType"
-            }
-          ],
-          staticClass: "form-control",
-          on: {
-            change: function($event) {
-              var $$selectedVal = Array.prototype.filter
-                .call($event.target.options, function(o) {
-                  return o.selected
-                })
-                .map(function(o) {
-                  var val = "_value" in o ? o._value : o.value
-                  return val
-                })
-              _vm.$set(
-                _vm.user,
-                "registerType",
-                $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-              )
-            }
-          }
-        },
-        [
-          _c("option", { attrs: { value: "mentor" } }, [_vm._v("Mentor")]),
+            })
+          ]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "mentee" } }, [_vm._v("Mentee")])
-        ]
-      ),
+          _vm._m(1)
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "horisontal_line" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-8" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.user.email,
+                  expression: "user.email"
+                }
+              ],
+              staticClass: "form-control-plaintext",
+              attrs: { type: "email", placeholder: "Email*" },
+              domProps: { value: _vm.user.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.user, "email", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(2)
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "horisontal_line" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-8" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.user.password,
+                  expression: "user.password"
+                }
+              ],
+              staticClass: "form-control-plaintext",
+              attrs: { type: "password", placeholder: "Password*" },
+              domProps: { value: _vm.user.password },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.user, "password", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "horisontal_line" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-8" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.user.confirmedPassword,
+                  expression: "user.confirmedPassword"
+                }
+              ],
+              staticClass: "form-control-plaintext",
+              attrs: { type: "password", placeholder: "Confirm Password*" },
+              domProps: { value: _vm.user.confirmedPassword },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.user, "confirmedPassword", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(4)
+        ]),
+        _vm._v(" "),
+        _c("hr", { staticClass: "horisontal_line" }),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user.registerType,
+                expression: "user.registerType"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.user,
+                  "registerType",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "mentor" } }, [_vm._v("Mentor")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "mentee" } }, [_vm._v("Mentee")])
+          ]
+        ),
+        _vm._v(" "),
+        _c("hr", { staticClass: "horisontal_line space_between" }),
+        _vm._v(" "),
+        _vm._m(5)
+      ]),
       _vm._v(" "),
-      _c("div", {
-        staticClass: "g-recaptcha",
-        attrs: { "data-sitekey": "6Les2T4UAAAAAKTY_F0SjXtjfgrDbc8lwKLpLaoG" }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "btn btn-light btn-block",
-        attrs: { id: "signUp", value: "Sign up" },
-        on: { click: _vm.registerUser }
-      }),
-      _vm._v(" "),
-      _vm._m(5)
-    ]),
-    _vm._v(" "),
-    _vm._m(6)
+      _c("div", { staticClass: " col-md-6 form_wrapper" }, [
+        _c("div", { staticClass: "reg-label" }, [
+          _vm._v(
+            "\n                        Programming languages of interest:\n                    "
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "register" },
+          _vm._l(_vm.programmingLanguages, function(programmingLanguage) {
+            return _c("li", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: programmingLanguage.checked,
+                    expression: "programmingLanguage.checked"
+                  }
+                ],
+                attrs: { type: "checkbox", id: programmingLanguage.name },
+                domProps: {
+                  value: programmingLanguage.name,
+                  checked: Array.isArray(programmingLanguage.checked)
+                    ? _vm._i(
+                        programmingLanguage.checked,
+                        programmingLanguage.name
+                      ) > -1
+                    : programmingLanguage.checked
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = programmingLanguage.checked,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = programmingLanguage.name,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          (programmingLanguage.checked = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (programmingLanguage.checked = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.$set(programmingLanguage, "checked", $$c)
+                    }
+                  }
+                }
+              }),
+              _vm._v(
+                _vm._s(programmingLanguage.name) + "\n                        "
+              )
+            ])
+          })
+        ),
+        _vm._v(" "),
+        _c("hr", { staticClass: "horisontal_line space_between" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "reg-label" }, [
+          _vm._v(
+            "\n                        I would like to communicate in:\n                    "
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "register" },
+          _vm._l(_vm.speakingLanguages, function(speakingLanguage) {
+            return _c("li", [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: speakingLanguage.checked,
+                    expression: "speakingLanguage.checked"
+                  }
+                ],
+                attrs: { type: "checkbox", id: speakingLanguage.name },
+                domProps: {
+                  value: speakingLanguage.name,
+                  checked: Array.isArray(speakingLanguage.checked)
+                    ? _vm._i(speakingLanguage.checked, speakingLanguage.name) >
+                      -1
+                    : speakingLanguage.checked
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = speakingLanguage.checked,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = speakingLanguage.name,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          (speakingLanguage.checked = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (speakingLanguage.checked = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.$set(speakingLanguage, "checked", $$c)
+                    }
+                  }
+                }
+              }),
+              _vm._v(
+                _vm._s(speakingLanguage.name) + "\n                        "
+              )
+            ])
+          })
+        ),
+        _vm._v(" "),
+        _c("hr", { staticClass: "horisontal_line space_between" }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "g-recaptcha",
+          attrs: { "data-sitekey": "6Les2T4UAAAAAKTY_F0SjXtjfgrDbc8lwKLpLaoG" }
+        }),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "btn btn-light btn-block",
+          attrs: { id: "signUp", value: "Sign up" },
+          on: { click: _vm.registerUser }
+        })
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -46970,14 +47130,6 @@ var staticRenderFns = [
       _c("a", { attrs: { href: "/login" } }, [
         _c("span", { staticClass: "login_label" }, [_vm._v("Login here")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form_wrapper" }, [
-      _c("h3", [_vm._v("Please, complete your profile ")])
     ])
   }
 ]
@@ -48536,16 +48688,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeImage: function removeImage(e) {
             this.image = '';
         },
-        /*showLog(){
-            var self = this;
-            var firstname = self.user.firstName;
-            var lastname = self.editedUser.lastName;
-            var email = self.user.email;
-            var password = self.user.password;
-            var programming_languages = self.checkedProgrammingLanguages;
-            var speaking_languages = self.checkedSpeakingLanguages;
-            console.log(firstname, lastname, email, programming_languages, speaking_languages);
-        },*/
         updateUser: function updateUser() {
             var self = this;
             var selectedProgrammingLanguages = self.programmingLanguages.filter(function (language) {
@@ -48887,7 +49029,10 @@ var render = function() {
         _vm.editable
           ? _c(
               "div",
-              { staticClass: "col-md-3", staticStyle: { position: "relativ" } },
+              {
+                staticClass: "col-md-3 pull-right",
+                staticStyle: { position: "relativ" }
+              },
               [
                 _c("div", { staticClass: "row avatarBox" }, [
                   !_vm.image

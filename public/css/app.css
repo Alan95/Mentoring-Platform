@@ -12778,8 +12778,8 @@ html {
 
 body {
   margin: 0;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#ac4ddf), color-stop(#642d85), to(#d884b5));
-  background-image: linear-gradient(to bottom right, #ac4ddf, #642d85, #d884b5);
+  background-image: -webkit-gradient(linear, left top, right bottom, from(yellow), color-stop(#ac4ddf), color-stop(#642d85), to(#d884b5));
+  background-image: linear-gradient(to bottom right, yellow, #ac4ddf, #642d85, #d884b5);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -12810,8 +12810,8 @@ body {
 }
 
 .particles {
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#ac4ddf), color-stop(#642d85), to(#d884b5));
-  background-image: linear-gradient(to bottom right, #ac4ddf, #642d85, #d884b5);
+  background-image: -webkit-gradient(linear, left top, right bottom, from(yellow), color-stop(#ac4ddf, git), color-stop(#642d85), to(#d884b5));
+  background-image: linear-gradient(to bottom right, yellow, git #ac4ddf, #642d85, #d884b5);
   background-size: cover;
   position: absolute;
   top: 0;
@@ -12833,12 +12833,17 @@ body {
   filter: alpha(opacity=80);
   /* For IE8 and earlier */
   margin: 8% auto;
+  margin-top: 35px;
 }
 
 .horisontal_line {
   padding: 0px;
   margin: 0px 20px 0px 20px;
   background-color: white;
+}
+
+.horisontal_line.space_between {
+  margin: 15px 20px 10px 20px;
 }
 
 input[type="text"],
@@ -12887,10 +12892,24 @@ input::placeholder {
   text-align: center;
 }
 
+.reg-label {
+  margin: 25px 20px 10px 20px;
+  color: white;
+}
+
 .g-recaptcha {
   width: 10em;
   height: 3em;
   margin: 5% 10% 10% 10%;
+}
+
+.register {
+  list-style: none;
+}
+
+.register li {
+  display: inline;
+  padding-right: 30px;
 }
 
 .form-control {
@@ -12908,7 +12927,15 @@ input::placeholder {
 #signUp {
   width: 90%;
   margin-left: 5%;
-  margin-top: 30px;
+  background-color: white;
+  color: #B9287D;
+}
+
+#signIn {
+  width: 90%;
+  margin-left: 5%;
+  background-color: white;
+  color: #B9287D;
 }
 
 .slide-fade-enter-active {
@@ -13080,6 +13107,7 @@ input::placeholder {
 .myProfile .button_myprofile {
   color: #B9287D;
   margin-bottom: 5%;
+  float: right;
 }
 
 .myProfile .dropdown {
