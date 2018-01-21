@@ -13,13 +13,13 @@
                     <div class="card-body">
                         <h5 class="card-title">I'm a ...</h5>    
                         <div class="row">
-                            <div class="col-6 border-line-left">
+                            <div class="col-6 border-line-left" @click="registerMentor">
                                 <img v-bind:src="'images/' + mentorLink" /> 
-                                <a href="/register/mentor" class="btn btn-violet btn-xs">Mentor</a>
+                                <input type="button" class="btn btn-violet btn-xs" value="Mentor" />
                             </div>
-                            <div class="col-6 border-line-right">
+                            <div class="col-6 border-line-right" @click="registerMentee">
                                 <img v-bind:src="'images/' + menteeLink" />
-                                <a href="/register/mentee" class="btn btn-violet btn-xs">Mentee</a>
+                                <input type="button" class="btn btn-violet btn-xs" value="Mentee" />
                             </div>    
                         </div>    
                     </div>    
@@ -45,6 +45,17 @@
             }
         },
         methods: {
+            registerMentor(){
+                console.log("test");
+                this.changePath('/register/mentor');
+            },
+            registerMentee(){
+                console.log("test");
+                this.changePath('/register/mentee');
+            },
+            changePath(path){
+                document.location.href = location.protocol + '//' + location.host + path
+            }
 
         }
     }

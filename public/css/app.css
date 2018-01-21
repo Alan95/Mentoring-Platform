@@ -13279,7 +13279,7 @@ input::placeholder {
   font-size: 16px;
   font-weight: bold;
   line-height: 18px;
-  color: #404040;
+  color: white;
 }
 
 .card.people .card-info .desc {

@@ -46397,7 +46397,19 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_particles__["a" /* default */]);
         };
     },
 
-    methods: {}
+    methods: {
+        registerMentor: function registerMentor() {
+            console.log("test");
+            this.changePath('/register/mentor');
+        },
+        registerMentee: function registerMentee() {
+            console.log("test");
+            this.changePath('/register/mentee');
+        },
+        changePath: function changePath(path) {
+            document.location.href = location.protocol + '//' + location.host + path;
+        }
+    }
 });
 
 /***/ }),
@@ -46474,35 +46486,41 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-6 border-line-left" }, [
-                        _c("img", {
-                          attrs: { src: "images/" + _vm.mentorLink }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-6 border-line-left",
+                          on: { click: _vm.registerMentor }
+                        },
+                        [
+                          _c("img", {
+                            attrs: { src: "images/" + _vm.mentorLink }
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
                             staticClass: "btn btn-violet btn-xs",
-                            attrs: { href: "/register/mentor" }
-                          },
-                          [_vm._v("Mentor")]
-                        )
-                      ]),
+                            attrs: { type: "button", value: "Mentor" }
+                          })
+                        ]
+                      ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-6 border-line-right" }, [
-                        _c("img", {
-                          attrs: { src: "images/" + _vm.menteeLink }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-6 border-line-right",
+                          on: { click: _vm.registerMentee }
+                        },
+                        [
+                          _c("img", {
+                            attrs: { src: "images/" + _vm.menteeLink }
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
                             staticClass: "btn btn-violet btn-xs",
-                            attrs: { href: "/register/mentee" }
-                          },
-                          [_vm._v("Mentee")]
-                        )
-                      ])
+                            attrs: { type: "button", value: "Mentee" }
+                          })
+                        ]
+                      )
                     ])
                   ])
                 ])
