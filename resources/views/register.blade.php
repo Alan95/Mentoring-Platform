@@ -1,4 +1,8 @@
 @extends('layout')
 @section('content')
-    <register></register>
+    @if(isset($type))
+    <register type='{{ $type }}'></register>
+    @else
+    <register type='""'></register>
+    @endif
 @endsection        

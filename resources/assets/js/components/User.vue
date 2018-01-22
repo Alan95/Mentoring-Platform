@@ -1,5 +1,5 @@
 <template>
-    <div class="jumbotron" style="background-color:transparent !important">
+    <div class="jumbotron">
         <div class="pull-right">
             <button v-if="me" @click="toggleEditable">Edit</button>
         </div>
@@ -53,7 +53,7 @@
                         <input v-if="editable" type="number" v-model="numberOfMentees"><span v-else v-if="numberOfMentees !== null">{{ numberOfMentees }}</span>
                     </template>
                 </div>
-                <div v-if="editable" class="col-md-3" style="position:relativ">
+                <div v-if="editable" class="col-md-3 pull-right" style="position:relativ">
                     <div class="row avatarBox">
                         <div v-if="!image">
                             <p class="label">Upload your Avatar</p>
@@ -129,16 +129,6 @@
                 removeImage: function (e) {
                     this.image = '';
                 },
-                /*showLog(){
-                    var self = this;
-                    var firstname = self.user.firstName;
-                    var lastname = self.editedUser.lastName;
-                    var email = self.user.email;
-                    var password = self.user.password;
-                    var programming_languages = self.checkedProgrammingLanguages;
-                    var speaking_languages = self.checkedSpeakingLanguages;
-                    console.log(firstname, lastname, email, programming_languages, speaking_languages);
-                },*/
                 updateUser() {
                     var self = this;
                     var selectedProgrammingLanguages = self.programmingLanguages.filter(language => {
@@ -156,7 +146,7 @@
                         speaking_languages: selectedSpeakingLanguages
                     })
                     .then(response => {
-                        alert("one step forward");
+                        alert("Your changes have been updated and saved ");
                         self.editable = false;
                     })
                     .catch(e => {

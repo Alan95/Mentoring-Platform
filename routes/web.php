@@ -36,3 +36,4 @@ Route::resource('groups', 'GroupController');
 
 Route::resource('conversations', 'ConversationController');
 
+Route::get('/backend', 'UserController@showBackend')->name('backend');
