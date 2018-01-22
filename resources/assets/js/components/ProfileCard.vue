@@ -14,7 +14,7 @@
                             <div class="title">
                                 <p target="_blank">{{ user.username}}</p>
                             </div>
-                            <div class="desc">Passion:</div>
+                            <div class="desc">Passion:{{ user.selectedProgrammingLanguages}}</div>
                             <div class="desc">Curious developer</div>
                             <div class="desc">Tech geek</div>
                         </div>

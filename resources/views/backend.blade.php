@@ -12,22 +12,7 @@
     </head>
     <body>
         <div id="app">
-            @yield('content')
+           Backend
         </div>
-        <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script>
-
-            // function prevents to submit a form if I am not a robot is not checked!
-         $(function(){
-             $('#registrationForm').submit(function(event){
-                 var verified = grecaptcha.getResponse();
-                 if(verified.length === 0){
-                     event.preventDefault();
-                 }
-             });
-         });
     </body>
 </html>
-
-
