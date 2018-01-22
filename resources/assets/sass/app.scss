@@ -36,7 +36,15 @@ body{
     background-color: $background_color;
     border: 1px solid white;
     color: white !important;
+    margin-top: 10px;
 }
+
+.btn-violet-main {
+    background-color: $background_color;
+    border: 1px solid white;
+    color: white !important;
+}
+
 
 .titlebox{
     z-index: 999;
@@ -377,6 +385,10 @@ opacity: 0;
 .card .card-heading {
     padding: 0 20px;
     margin: 0;
+}
+
+.mentorimage {
+    border-radius: 5px;
 }
 
 .card .card-heading.simple {

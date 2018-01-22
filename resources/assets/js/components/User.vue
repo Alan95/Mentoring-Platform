@@ -144,7 +144,6 @@
                     var selectedProgrammingLanguages = self.programmingLanguages.filter(language => {
                         return language.checked
                     });
-
                     var selectedSpeakingLanguages = self.speakingLanguages.filter(language => {
                         return language.checked
                     });

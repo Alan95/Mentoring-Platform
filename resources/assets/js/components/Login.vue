@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="form_wrapper">
-                <div class="row">
+            <div class="row">
                 <div class="col-md-8">
                     <input type="email" v-model="user.email" class="form-control-plaintext" placeholder="Email*">
                 </div>
@@ -26,6 +26,7 @@
                     <i class="fa fa-key icon_right" aria-hidden="true"></i>
                 </div>
             </div>
+            <hr class="horisontal_line">
             <br>
             <input @click="doLogin" id="signIn" class="btn btn-light btn-block" value="Sign in"/>
             <p class="register_text">Don´t have an account yet?<br>

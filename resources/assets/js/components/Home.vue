@@ -6,7 +6,7 @@
             <p>The global mentoring platform.</p>
             <div class="btn-group">
                 <a class="btn btn-light btn-sm" href="/login">Login</a>
-                <a class="btn btn-light btn-sm btn-violet" @click="showCard = !showCard">Sign up</a>
+                <a class="btn btn-light btn-sm btn-violet-main" @click="showCard = !showCard">Sign up</a>
             </div>
             <transition name="slide-fade">
                 <div class="card" v-if="showCard">
@@ -14,11 +14,13 @@
                         <h5 class="card-title">I'm a ...</h5>    
                         <div class="row">
                             <div class="col-6 border-line-left">
-                                <img v-bind:src="'images/' + mentorLink" /> 
+                                <img v-bind:src="'images/' + mentorLink" class="mentorimage"/>
+                                <br>
                                 <a href="register" class="btn btn-violet btn-xs">Mentor</a>
                             </div>
                             <div class="col-6 border-line-right">
-                                <img v-bind:src="'images/' + menteeLink" />
+                                <img v-bind:src="'images/' + menteeLink" class="mentorimage"/>
+                                <br>
                                 <a href="/register" class="btn btn-violet btn-xs">Mentee</a>
                             </div>    
                         </div>    

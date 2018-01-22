@@ -90,7 +90,6 @@
                 axios.get('/api/user')
                 .then(response => { 
                     self.user = response.data;
-                    console.log(self.user);
                 })
                 .catch(e => { 
                     self.errors.push(e)

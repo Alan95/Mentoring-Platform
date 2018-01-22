@@ -12960,6 +12960,13 @@ body {
   background-color: #64009b;
   border: 1px solid white;
   color: white !important;
+  margin-top: 10px;
+}
+
+.btn-violet-main {
+  background-color: #64009b;
+  border: 1px solid white;
+  color: white !important;
 }
 
 .titlebox {
@@ -13315,6 +13322,10 @@ input::placeholder {
 .card .card-heading {
   padding: 0 20px;
   margin: 0;
+}
+
+.mentorimage {
+  border-radius: 5px;
 }
 
 .card .card-heading.simple {

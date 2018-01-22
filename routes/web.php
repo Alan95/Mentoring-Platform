@@ -32,4 +32,7 @@ Route::get('/api/user', 'UserController@getMyUser');
 
 Route::post('uploadAvatar', 'UserController@uploadAvatar');
 
+Route::resource('groups', 'GroupController');
+
+Route::resource('conversations', 'ConversationController');
 
