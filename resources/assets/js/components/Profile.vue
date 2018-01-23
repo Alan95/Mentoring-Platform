@@ -10,11 +10,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="showSection('user')">Me</a>
             </li>
-            <li class="nav-item" v-if="user.registerType">
-                <a class="nav-link" href="#" @click="showSection('list')">Search Mentee</a>
+            <li class="nav-item" v-if="user.is_a_mentor">
+                <a class="nav-link" href="#" @click="showSection('list')">Search Mentees</a>
             </li>    
             <li class="nav-item" v-else>
-                <a class="nav-link" href="#" @click="showSection('list')">Search Mentor</a>
+                <a class="nav-link" href="#" @click="showSection('list')">Search Mentors</a>
             </li>    
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="showSection('chats')">Chats</a>
@@ -29,8 +29,13 @@
                 <h3>Chatrooms</h3>
             </div>
             <div class="jumbotron">
-                <h3>Newest Mentors</h3>
-
+                <h3>Newest <template v-if="user.is_a_mentor">Mentees</template><template v-else>Mentors</template></h3>
+                <ul v-if="mentors" class="row list-group">
+                    <li class="list-group-item" v-for="mentor in mentors">{{ mentor.username }}</li>
+                </ul>
+                <ul v-else class="row list-group">
+                    <li class="list-group-item" v-for="mentee in mentees">{{ mentee.username }}</li>
+                </ul>
             </div>
             <div class="jumbotron">
                 <h3>News</h3>
@@ -68,7 +73,6 @@
         mounted() {
             console.log('Component mounted.')
             this.getUser();
-            this.user.is_a_mentor === true ? this.getMentors : this.getMentees;
         },
         components:{
          'chat': Chat,
@@ -82,7 +86,8 @@
                     email: '',
                     registerType: null
                 },
-                users: [],
+                mentors:  null,
+                mentees: null,
                 section: 'dashboard',
                 errors: []
             }
@@ -93,6 +98,7 @@
                 axios.get('/api/user')
                 .then(response => { 
                     self.user = response.data;
+                    self.user.is_a_mentor ? self.getMentees() : self.getMentors();
                 })
                 .catch(e => { 
                     self.errors.push(e)
@@ -100,11 +106,23 @@
             },
             getMentors(){
                 var self = this;
-                console.log("getMentors");
+                axios.get('/api/user/mentors')
+                    .then(response => {
+                        self.mentors = response.data
+                    })
+                    .catch(e => {
+                        self.errors.push(e)
+                    })
             },
             getMentees(){
                 var self = this;
-                console.log("getMentees");
+                axios.get('/api/user/mentees')
+                    .then(response => {
+                        self.mentees = response.data
+                    })
+                    .catch(e => {
+                        self.errors.push(e)
+                    })
             },
             showSection(section){
                 this.section = section;

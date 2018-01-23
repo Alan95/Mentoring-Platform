@@ -29,6 +29,7 @@ Route::get('logout', 'UserController@loggingOut');
 Route::get('/profile', 'ProfileController@showProfilePage')->name('profile');
 
 Route::get('/api/user', 'UserController@getMyUser');
+Route::get('/api/user/{type}', 'UserController@getUserType');
 
 Route::post('uploadAvatar', 'UserController@uploadAvatar');
 

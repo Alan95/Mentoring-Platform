@@ -1,31 +1,36 @@
 <template>
     <div class="jumbotron">
-        <h2>Search for a </h2>
-        <input v-model="search" class="col-5"/>
-        <select v-model="selectedProgrammingLanguage" >
-            <option  value="All" >All</option>
-            <option  value="Java" > Java</option>
-            <option  value="PHP"> PHP</option>
-            <option value="C++" > C++</option>
-            <option value="C#" > C#</option>
-            <option value="HTML" > HTML</option>
-            <option value="SQL" > SQL</option>
-            <option value="C" > C</option>
-            <option value="Ruby" > Ruby</option>
-        </select>
-        <select v-model="selectedLanguage" >
-            <option  value="All" >All</option>
-            <option  value="en" >English </option>
-            <option  value="ger" >German</option>
-            <option value="ch" > Chinese</option>
-            <option value="rus" > Russian</option>
-            <option value="esp" > Spanish</option>
-        </select>
+        <h2>Search for a Mentor/Mentee</h2>
+        <div class="row">
+            <input v-model="search" class="col-11 form-control"/>
+            <select class="form-control col-5" v-model="selectedProgrammingLanguage" >
+                <option  value="All" >Programming Language</option>
+                <option  value="Java" > Java</option>
+                <option  value="PHP"> PHP</option>
+                <option value="C++" > C++</option>
+                <option value="C#" > C#</option>
+                <option value="HTML" > HTML</option>
+                <option value="SQL" > SQL</option>
+                <option value="C" > C</option>
+                <option value="Ruby" > Ruby</option>
+            </select>
+            <select class="form-control col-5" v-model="selectedLanguage" >
+                <option  value="All" >Speaking Language</option>
+                <option  value="en" >English </option>
+                <option  value="ger" >German</option>
+                <option value="ch" > Chinese</option>
+                <option value="rus" > Russian</option>
+                <option value="esp" > Spanish</option>
+            </select>
+        </div>
         <br>
         <ul class="list-group row">
-            <li v-for="user in filteredList" class="list-group-item">
+            <li v-for="user in filteredList">
                 <a @click="openModal"><profilecard :user="user"></profilecard></a>
             </li>
+            <template v-if="filteredList && filteredList.length < 1 ">
+                <h3>No Users found.</h3>
+            </template>
         </ul>
     </div>
 </template>

@@ -67,8 +67,9 @@
                     <a href="#" class="fa fa-snapchat-ghost"></a>
                     <div class="contactButtons">
                     <template v-if="!me">
-                        <p><input type="button" class="btn btn-default btn-sm" value="Chat Now"></input>
-                        <input type="button" class="btn btn-default btn-sm" value="Send Friend Request"></input>
+                        <p>
+                            <input type="button" class="btn btn-default btn-sm" value="Chat Now"></input>
+                            <input type="button" class="btn btn-default btn-sm" value="Send Friend Request"></input>
                         </p>
                     </template>
                     </div>    

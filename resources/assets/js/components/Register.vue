@@ -127,6 +127,7 @@
                 var selectedProgrammingLanguages = self.programmingLanguages.filter(language => {
                     return language.checked
                 });
+
                 selectedProgrammingLanguages.forEach(function(v){ delete v.checked });
 
                 var selectedSpeakingLanguages = self.speakingLanguages.filter(language => {

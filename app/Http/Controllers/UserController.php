@@ -34,26 +34,32 @@ class UserController extends BaseController
         $request->validate([
             'username' => 'required|max:255',
             'password' => 'required|max:255',
-            'email' => ''
+            'email' => 'required|max:255'
         ]);
 
         $user = new User;
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
-        if(count($request->programming_languages) > 0){
-            $user->programming_languages = json_encode($request->programming_languages);
-        }
-
-        if(count($request->speaking_languages) > 0){
-            $user->speaking_languages = json_encode($request->speaking_languages);
-        }
+        $user->programming_languages = json_encode($request->programming_languages);
+        $user->speaking_languages = json_encode($request->speaking_languages);
 
         $request->registerType === 'mentor' ? $user->is_a_mentor = true: $user->is_a_mentor = false;
         $user->is_admin = false;
         $user->save();
         $this->loginUser($user);
         return response(200);
+    }
+
+    public function getUserType($type)
+    {
+        if($type == 'mentors'){
+            $users = User::orderBy('id', 'desc')->where('is_a_mentor')->take(5)->get();
+        } else {
+            $users = User::orderBy('id', 'desc')->where('is_a_mentor', false)->take(5)->get();
+        }
+
+        return response()->json($users);
     }
 
     public function updateUser(Request $request)

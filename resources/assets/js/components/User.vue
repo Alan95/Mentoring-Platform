@@ -5,17 +5,24 @@
         </div>
         <div class="container myProfile">
             <div class="row">
+                <div class="cardHeader col-md-5 text-center">
+                    <a class="img" href="#">
+                        <img src="https://0.soompi.io/wp-content/uploads/2017/06/13023028/TWICE-Mina.jpg"/>
+                    </a>
+                    <button class="btn btn-violet">Upload Picture</button>
+                </div>
                 <div class="col-md-3">
                     <label class="myProfile_label">Firstname</label>
-                    <input v-if="editable" type="text" class="input_myprofile" v-model="user.first_name"><span v-else>{{ user.first_name }}</span>
+                    <input v-if="editable" type="text" class="input_myprofile form-control" v-model="user.first_name"><span v-else><template v-if="user.first_name == '' || user.first_name == null">-</template><template v-else>{{ user.first_name }}</template></span>
                     <label class="myProfile_label">Lastname</label>
-                    <input v-if="editable" type="text" class="input_myprofile" v-model="user.last_name"><span v-else>{{ user.last_name }}</span>
+                    <input v-if="editable" type="text" class="input_myprofile form-control" v-model="user.last_name"><span v-else><template v-if="user.last_name == '' || user.last_name == null">-</template><template v-else>{{ user.last_name }}</template></span>
                     <label class="myProfile_label">Username</label>
-                    <input v-if="editable" type="text" class="input_myprofile" :value="user.username" readonly><span v-else>{{ user.username }}</span>
+                    <input v-if="editable" type="text" class="input_myprofile form-control" :value="user.username" readonly><span v-else>{{ user.username }}</span>
                     <label class="myProfile_label">Email</label>
-                    <input v-if="editable"type="text" class="input_myprofile" :value="user.email"><span v-else>{{ user.email }}</span>
+                    <input v-if="editable"type="text" class="input_myprofile form-control" :value="user.email"><span v-else>{{ user.email }}</span>
                     <label class="myProfile_label">Password</label>
-                    <input v-if="editable" type="password" class="input_myprofile" :value='user.password'><span v-else>{{ user.password }}</span>
+                    <!--<input v-if="editable" type="password" class="input_myprofile" :value='user.password'><span v-else>{{ user.password }}</span>-->
+                    <button class="btn btn-violet">Change Password</button>
                 </div>
                 <div class="col-md-6">
                     <label class=myProfile_label>Programming languages</label>
@@ -28,7 +35,7 @@
                                     <input type="checkbox" :id="programmingLanguage.name" :value="programmingLanguage.name" v-model="programmingLanguage.checked">{{ programmingLanguage.name }}
                                 </td>
                                 <td v-else>
-                                    {{ programmingLanguage.name }}
+                                    <template v-if="programmingLanguage.checked">{{ programmingLanguage.name }}</template>
                                 </td>
                             </tr>
                         </tbody>
@@ -43,18 +50,18 @@
                                     <input v-if="editable" type="checkbox" :id="speakingLanguage.name" :value="speakingLanguage.name" v-model="speakingLanguage.checked">{{ speakingLanguage.name }}
                                 </td>
                                 <td v-else>
-                                    {{ speakingLanguage.name }}
+                                    <template v-if="speakingLanguage.checked">{{ speakingLanguage.name }}</template>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <template v-if="user.is_a_mentor">
+                    <!--<template v-if="user.is_a_mentor">
                         <label class=myProfile_label>I have place for...mentees</label>
                         <input v-if="editable" type="number" v-model="numberOfMentees"><span v-else v-if="numberOfMentees !== null">{{ numberOfMentees }}</span>
-                    </template>
+                    </template>-->
                 </div>
-                <div v-if="editable" class="col-md-3 pull-right" style="position:relativ">
-                    <div class="row avatarBox">
+                <div v-if="editable" class="col-md-12">
+                    <!--<div class="row avatarBox">
                         <div v-if="!image">
                             <p class="label">Upload your Avatar</p>
                             <input type="file" class="button_myprofile btn-block btn-xs" @change="onFileChange">
@@ -63,9 +70,10 @@
                             <img :src="image" />
                             <button @click="removeImage" class="button_myprofile btn-block btn-xs">Change Avatar</button>
                         </div>
-                    </div>
-                    <div class="row" v-if="editable">
-                        <button @click="updateUser" class="button_myprofile btn-block btn-xs saveSettings">Save Changes</button>
+                    </div>-->
+                    <br>
+                    <div v-if="editable">
+                        <button @click="updateUser" class="btn btn-block btn-violet btn-xs saveSettings">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -76,7 +84,8 @@
 
 <script>
     export default {
-        mounted() {
+        created() {
+            this.changeSelectOptions()
         },
         props: ["user", "me"],
         data() {
@@ -107,6 +116,16 @@
             }
         },
         methods: {
+                changeSelectOptions(){
+                  var self = this;
+                  self.programmingLanguages.forEach(function(item) {
+                      JSON.parse(self.user.programming_languages).forEach(function(useritem){
+                          if(item.name === useritem.name){
+                              item.checked = true;
+                          }
+                      });
+                  });
+                },
                 toggleEditable(){
                     this.editable = !this.editable;
                 },
