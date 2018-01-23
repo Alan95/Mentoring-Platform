@@ -85,6 +85,10 @@
                 axios.get('/api/users')
                     .then(response => {
                         self.users = response.data;
+                        self.users.forEach(function(item){
+                           item.speaking_languages = JSON.parse(item.speaking_languages);
+                           item.programming_languages = JSON.parse(item.programming_languages);
+                        });
                     })
                     .catch(e => {
                         self.errors.push(e)

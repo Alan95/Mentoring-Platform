@@ -55521,6 +55521,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var self = this;
             axios.get('/api/users').then(function (response) {
                 self.users = response.data;
+                self.users.forEach(function (item) {
+                    item.speaking_languages = JSON.parse(item.speaking_languages);
+                    item.programming_languages = JSON.parse(item.programming_languages);
+                });
             }).catch(function (e) {
                 self.errors.push(e);
             });
@@ -55535,6 +55539,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -55653,19 +55659,31 @@ var render = function() {
       _c("hr", { staticClass: "horisontal_line space_between" }),
       _vm._v(" "),
       _c("div", { staticClass: "cardLabel" }, [
-        _c("p", [
-          _vm._v("Speaking: "),
-          _c("span", { staticClass: "cardContent" }, [
-            _vm._v(_vm._s(_vm.user.programming_languages) + " ")
-          ])
-        ]),
+        _vm.user.programming_languages
+          ? _c("p", [
+              _vm._v("Speaking: "),
+              _c(
+                "span",
+                { staticClass: "cardContent" },
+                _vm._l(_vm.user.programming_languages, function(prog) {
+                  return _c("span", [_vm._v(_vm._s(prog.name) + " ")])
+                })
+              )
+            ])
+          : _c("p", [_vm._v("No Programming Language selected")]),
         _vm._v(" "),
-        _c("p", [
-          _vm._v("And also: "),
-          _c("span", { staticClass: "cardContent" }, [
-            _vm._v(_vm._s(_vm.user.speaking_languages))
-          ])
-        ])
+        _vm.user.speaking_languages
+          ? _c("p", [
+              _vm._v("And also: "),
+              _c(
+                "span",
+                { staticClass: "cardContent" },
+                _vm._l(_vm.user.speaking_languages, function(speaky) {
+                  return _c("span", [_vm._v(_vm._s(speaky.name) + " ")])
+                })
+              )
+            ])
+          : _c("p", [_vm._v("No Speaking Language selected")])
       ]),
       _vm._v(" "),
       _c("hr", {

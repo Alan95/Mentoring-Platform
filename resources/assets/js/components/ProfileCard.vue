@@ -54,8 +54,10 @@
                     <div class="cardTitle"><h2 align="center">{{ user.username }}</h2></div>
                     <hr class="horisontal_line space_between">
                     <div class="cardLabel">
-                        <p>Speaking: <span class="cardContent">{{ user.programming_languages }} </span></p>
-                        <p>And also: <span class="cardContent">{{user.speaking_languages}}</span></p>
+                        <p v-if="user.programming_languages">Speaking: <span class="cardContent"><span v-for="prog in user.programming_languages">{{ prog.name }} </span></span></p>
+                        <p v-else>No Programming Language selected</p>
+                        <p v-if="user.speaking_languages">And also: <span class="cardContent"><span v-for="speaky in user.speaking_languages">{{ speaky.name }} </span></span></p>
+                        <p v-else>No Speaking Language selected</p>
                     </div>
                     <hr class="horisontal_line space_between" style="margin-bottom:5px">
             </div>
