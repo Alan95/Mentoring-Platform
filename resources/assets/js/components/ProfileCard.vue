@@ -1,8 +1,7 @@
 <template>
-    <div class="container">
+    <!--<div class="container">
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
-        
                     <div class="card hovercard">
                         <div class="cardheader">
         
@@ -14,7 +13,7 @@
                             <div class="title">
                                 <p target="_blank">{{ user.username}}</p>
                             </div>
-                            <div class="desc">Passion:{{ user.selectedProgrammingLanguages}}</div>
+                            <div class="desc">Passion:{{ selectedProgrammingLanguages}}</div>
                             <div class="desc">Curious developer</div>
                             <div class="desc">Tech geek</div>
                         </div>
@@ -43,7 +42,41 @@
                 </div>
         
             </div>
-        </div>
+        </div>-->
+
+        <div class="card_wrapper">
+                <div class="cardHeader">   
+                    <a class="img" href="#">
+                        <img src="https://0.soompi.io/wp-content/uploads/2017/06/13023028/TWICE-Mina.jpg"/>
+                    </a>
+                </div>
+                <div class="cardBody">
+                    <div class="cardTitle"><h2 align="center">{{ user.username }}</h2></div>
+                    <hr class="horisontal_line space_between">
+                    <div class="cardLabel">
+                        <p>Speaking: <span class="cardContent">{{ user.programming_languages }} </span></p>
+                        <p>And also: <span class="cardContent">{{user.speaking_languages}}</span></p>
+                    </div>
+                    <hr class="horisontal_line space_between" style="margin-bottom:5px">
+            </div>
+                <div class="cardFooter">
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-snapchat-ghost"></a>
+                    <div class="contactButtons">
+                    <template v-if="!me">
+                        <p><input type="button" class="btn btn-default btn-sm" value="Chat Now"></input>
+                        <input type="button" class="btn btn-default btn-sm" value="Send Friend Request"></input>
+                        </p>
+                    </template>
+                    </div>    
+                </div>
+            </div>
+
+
+
 
 </template>
 

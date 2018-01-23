@@ -48175,6 +48175,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {},
@@ -48197,54 +48230,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-3 col-sm-6" }, [
-        _c("div", { staticClass: "card hovercard" }, [
-          _c("div", { staticClass: "cardheader" }),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "info" }, [
-            _c("div", { staticClass: "title" }, [
-              _c("p", { attrs: { target: "_blank" } }, [
-                _vm._v(_vm._s(_vm.user.username))
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "desc" }, [
-              _vm._v("Passion:" + _vm._s(_vm.user.selectedProgrammingLanguages))
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "desc" }, [_vm._v("Curious developer")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "desc" }, [_vm._v("Tech geek")])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "bottom" },
-            [
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._m(2),
-              _vm._v(" "),
-              _vm._m(3),
-              _vm._v(" "),
-              _vm._m(4),
-              _vm._v(" "),
-              !_vm.me
-                ? [
-                    _c("button", [_vm._v("Chat Now")]),
-                    _vm._v(" "),
-                    _c("button", [_vm._v("Send Friend Request")])
-                  ]
-                : _vm._e()
-            ],
-            2
-          )
+  return _c("div", { staticClass: "card_wrapper" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "cardBody" }, [
+      _c("div", { staticClass: "cardTitle" }, [
+        _c("h2", { attrs: { align: "center" } }, [
+          _vm._v(_vm._s(_vm.user.username))
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "horisontal_line space_between" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "cardLabel" }, [
+        _c("p", [
+          _vm._v("Speaking: "),
+          _c("span", { staticClass: "cardContent" }, [
+            _vm._v(_vm._s(_vm.user.programming_languages) + " ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v("And also: "),
+          _c("span", { staticClass: "cardContent" }, [
+            _vm._v(_vm._s(_vm.user.speaking_languages))
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("hr", {
+        staticClass: "horisontal_line space_between",
+        staticStyle: { "margin-bottom": "5px" }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "cardFooter" }, [
+      _c("a", { staticClass: "fa fa-twitter", attrs: { href: "#" } }),
+      _vm._v(" "),
+      _c("a", { staticClass: "fa fa-facebook", attrs: { href: "#" } }),
+      _vm._v(" "),
+      _c("a", { staticClass: "fa fa-linkedin", attrs: { href: "#" } }),
+      _vm._v(" "),
+      _c("a", { staticClass: "fa fa-instagram", attrs: { href: "#" } }),
+      _vm._v(" "),
+      _c("a", { staticClass: "fa fa-snapchat-ghost", attrs: { href: "#" } }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "contactButtons" },
+        [!_vm.me ? [_vm._m(1)] : _vm._e()],
+        2
+      )
     ])
   ])
 }
@@ -48253,70 +48289,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "avatar" }, [
-      _c("img", {
-        attrs: {
-          alt: "",
-          src:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR847W2CKaHWeekeI8jVGAr19XqgqLj-wSGRt74sLrOsGEu7LrY"
-        }
-      })
+    return _c("div", { staticClass: "cardHeader" }, [
+      _c("a", { staticClass: "img", attrs: { href: "#" } }, [
+        _c("img", {
+          attrs: {
+            src:
+              "https://0.soompi.io/wp-content/uploads/2017/06/13023028/TWICE-Mina.jpg"
+          }
+        })
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn btn-primary btn-twitter btn-sm",
-        attrs: { href: "https://twitter.com/webmaniac" }
-      },
-      [_c("i", { staticClass: "fa fa-twitter" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn btn-danger btn-sm",
-        attrs: {
-          rel: "publisher",
-          href: "https://plus.google.com/+ahmshahnuralam"
-        }
-      },
-      [_c("i", { staticClass: "fa fa-google-plus" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn btn-primary btn-sm",
-        attrs: { rel: "publisher", href: "https://plus.google.com/shahnuralam" }
-      },
-      [_c("i", { staticClass: "fa fa-facebook" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn btn-warning btn-sm",
-        attrs: { rel: "publisher", href: "https://plus.google.com/shahnuralam" }
-      },
-      [_c("i", { staticClass: "fa fa-behance" })]
-    )
+    return _c("p", [
+      _c("input", {
+        staticClass: "btn btn-default btn-sm",
+        attrs: { type: "button", value: "Chat Now" }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "btn btn-default btn-sm",
+        attrs: { type: "button", value: "Send Friend Request" }
+      })
+    ])
   }
 ]
 render._withStripped = true
