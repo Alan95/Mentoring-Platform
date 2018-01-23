@@ -1,7 +1,7 @@
 <template>
     <div class="jumbotron">
         <div class="pull-right">
-            <button v-if="me" @click="toggleEditable">Edit</button>
+            <button v-if="me" class="btn btn-violet"@click="toggleEditable">Edit</button>
         </div>
         <div class="container myProfile">
             <div class="row">

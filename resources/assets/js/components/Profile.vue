@@ -1,7 +1,7 @@
 <template>
     <div class="container profile-site">
         <div class="page_title row">
-                <h1 class="text-center">Welcome back, {{ user.username }}</h1>
+                <h1 class="text-center">Welcome, {{ user.username }} - </h1><h1 v-if="user.is_a_mentor">Mentor</h1><h1 v-else>Mentee</h1>
         </div>
         <ul class="nav profile-nav justify-content-center">
             <li class="nav-item">
@@ -30,6 +30,7 @@
             </div>
             <div class="jumbotron">
                 <h3>Newest Mentors</h3>
+
             </div>
             <div class="jumbotron">
                 <h3>News</h3>
@@ -67,6 +68,7 @@
         mounted() {
             console.log('Component mounted.')
             this.getUser();
+            this.user.is_a_mentor === true ? this.getMentors : this.getMentees;
         },
         components:{
          'chat': Chat,
@@ -80,6 +82,7 @@
                     email: '',
                     registerType: null
                 },
+                users: [],
                 section: 'dashboard',
                 errors: []
             }
@@ -94,6 +97,14 @@
                 .catch(e => { 
                     self.errors.push(e)
                 })
+            },
+            getMentors(){
+                var self = this;
+                console.log("getMentors");
+            },
+            getMentees(){
+                var self = this;
+                console.log("getMentees");
             },
             showSection(section){
                 this.section = section;

@@ -60,8 +60,8 @@
                                 Programming languages of interest:
                             </div>
                             <ul class="register">  
-                                <li v-for="programmingLanguage in programmingLanguages">
-                                    <input type="checkbox" :id="programmingLanguage.name" :value="programmingLanguage.name" v-model="programmingLanguage.checked">{{ programmingLanguage.name }}
+                                <li v-for="(programmingLanguage, ind) in programmingLanguages">
+                                    <input type="checkbox" :id="programmingLanguage.name" :value="programmingLanguage.name" v-model="programmingLanguage.checked"> {{ programmingLanguage.name }}
                                 </li>
                             </ul>
                             <hr class="horisontal_line space_between">
@@ -69,9 +69,8 @@
                                 I would like to communicate in:
                             </div>
                             <ul class="register">
-                                    
-                                <li v-for="speakingLanguage in speakingLanguages">
-                                    <input type="checkbox" :id="speakingLanguage.name" :value="speakingLanguage.name" v-model="speakingLanguage.checked">{{ speakingLanguage.name }}
+                                <li v-for="(speakingLanguage, ind) in speakingLanguages">
+                                   <input type="checkbox" :id="speakingLanguage.name" :value="speakingLanguage.name" v-model="speakingLanguage.checked"> {{ speakingLanguage.name }}
                                 </li>
                             </ul>
                             <hr class="horisontal_line space_between">                  
@@ -98,8 +97,6 @@
                     password: '',
                     confirmedPassword: '',
                     registerType: '',
-                    programming_languages: [], 
-                    selectedProgrammingLanguages: [],   
                 },
                 errors: [],
                 programmingLanguages: [
@@ -123,15 +120,21 @@
             }
         },
         methods: {
+
             registerUser(){
                 var self = this;
+
                 var selectedProgrammingLanguages = self.programmingLanguages.filter(language => {
-                        return language.checked
-                    });
+                    return language.checked
+                });
+                selectedProgrammingLanguages.forEach(function(v){ delete v.checked });
+
                 var selectedSpeakingLanguages = self.speakingLanguages.filter(language => {
                     return language.checked
                 });
-                if(self.user.password == self.user.confirmedPassword){
+                selectedSpeakingLanguages.forEach(function(v){ delete v.checked });
+
+                if(self.user.password === self.user.confirmedPassword){
                     axios.post(`/api/register`, {
                         username: self.user.username,
                         email: self.user.email,
@@ -151,6 +154,7 @@
                 } else {
                     alert('Password not same');
                 }
+
             },
             changePath(path){
                 document.location.href = location.protocol + '//' + location.host + path
