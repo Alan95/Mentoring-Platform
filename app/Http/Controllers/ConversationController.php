@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Conversation;
 use Illuminate\Http\Request;
 
-class ConversatonController extends Controller
+class ConversationController extends Controller
 {
     public function store()
     {

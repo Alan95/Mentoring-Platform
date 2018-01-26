@@ -62,6 +62,9 @@
                             <ul class="register">  
                                 <li v-for="(programmingLanguage, ind) in programmingLanguages">
                                     <input type="checkbox" :id="programmingLanguage.name" :value="programmingLanguage.name" v-model="programmingLanguage.checked"> {{ programmingLanguage.name }}
+                                    <template v-if="ind == 3">
+                                        <br>
+                                    </template>
                                 </li>
                             </ul>
                             <hr class="horisontal_line space_between">
@@ -71,6 +74,9 @@
                             <ul class="register">
                                 <li v-for="(speakingLanguage, ind) in speakingLanguages">
                                    <input type="checkbox" :id="speakingLanguage.name" :value="speakingLanguage.name" v-model="speakingLanguage.checked"> {{ speakingLanguage.name }}
+                                    <template v-if="ind == 2">
+                                        <br>
+                                    </template>
                                 </li>
                             </ul>
                             <hr class="horisontal_line space_between">                  

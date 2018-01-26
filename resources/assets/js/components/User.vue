@@ -7,9 +7,11 @@
             <div class="row">
                 <div class="cardHeader col-md-5 text-center">
                     <a class="img" href="#">
-                        <img src="https://0.soompi.io/wp-content/uploads/2017/06/13023028/TWICE-Mina.jpg"/>
+                        <img v-if="imageUrl" :src="imageUrl">
+                        <img v-else src="http://www.pieglobal.com/wp-content/uploads/2015/10/placeholder-user.png" >
                     </a>
-                    <button class="btn btn-violet">Upload Picture</button>
+                    <button class="btn btn-violet" @click="onPickFile">Upload Picture</button>
+                    <input @change="onFilePicked" type="file" style="display: none" ref="fileInput" accept="image/*">
                 </div>
                 <div class="col-md-3">
                     <label class="myProfile_label">Firstname</label>
@@ -22,7 +24,14 @@
                     <input v-if="editable"type="text" class="input_myprofile form-control" :value="user.email"><span v-else>{{ user.email }}</span>
                     <label class="myProfile_label">Password</label>
                     <!--<input v-if="editable" type="password" class="input_myprofile" :value='user.password'><span v-else>{{ user.password }}</span>-->
-                    <button class="btn btn-violet">Change Password</button>
+                    <button class="btn btn-violet" v-if="!changePasswords" @click="changePasswords = !changePasswords">Change Password</button>
+                    <template v-else>
+                        <label>New Password</label>
+                        <input class="form-control" type="password" v-model="newPassword">
+                        <label>Confirm Password</label>
+                        <input class="form-control" type="password" v-model="newPasswordConfirm">
+                        <button class="btn btn-violet" @click="changePassword">Save</button>
+                    </template>
                 </div>
                 <div class="col-md-6">
                     <label class=myProfile_label>Programming languages</label>
@@ -55,22 +64,8 @@
                             </tr>
                         </tbody>
                     </table>
-                    <!--<template v-if="user.is_a_mentor">
-                        <label class=myProfile_label>I have place for...mentees</label>
-                        <input v-if="editable" type="number" v-model="numberOfMentees"><span v-else v-if="numberOfMentees !== null">{{ numberOfMentees }}</span>
-                    </template>-->
                 </div>
                 <div v-if="editable" class="col-md-12">
-                    <!--<div class="row avatarBox">
-                        <div v-if="!image">
-                            <p class="label">Upload your Avatar</p>
-                            <input type="file" class="button_myprofile btn-block btn-xs" @change="onFileChange">
-                        </div>
-                        <div v-else>
-                            <img :src="image" />
-                            <button @click="removeImage" class="button_myprofile btn-block btn-xs">Change Avatar</button>
-                        </div>
-                    </div>-->
                     <br>
                     <div v-if="editable">
                         <button @click="updateUser" class="btn btn-block btn-violet btn-xs saveSettings">Save Changes</button>
@@ -111,8 +106,12 @@
                     {name: 'Spanish', checked: false},
                 ],
                 numberOfMentees: null,
-                image: '',
-                errors: []
+                image: null,
+                errors: [],
+                imageUrl: '',
+                changePasswords: false,
+                newPassword: '',
+                newPasswordConfirm: ''
             }
         },
         methods: {
@@ -125,48 +124,86 @@
                           }
                       });
                   });
+
+                  self.speakingLanguages.forEach(function(item){
+                      JSON.parse(self.user.speaking_languages).forEach(function(useritem){
+                          if(item.name === useritem.name){
+                              item.checked = true;
+                          }
+                      });
+                  });
                 },
                 toggleEditable(){
                     this.editable = !this.editable;
                 },
-                onFileChange(e) {
-                    var files = e.target.files || e.dataTransfer.files;
-                    if (!files.length)
-                        return;
-                    this.createImage(files[0]);
-                },
-                createImage(file) {
-                    var image = new Image();
-                    var reader = new FileReader();
-                    var vm = this;
+                onPickFile() {
+                  this.$refs.fileInput.click()
 
-                    reader.onload = (e) => {
-                        vm.image = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
                 },
-                removeImage: function (e) {
-                    this.image = '';
+                onFilePicked(event) {
+                    var files = event.target.files;
+                    var filename = files[0].name;
+                    if (filename.lastIndexOf('.') <= 0){
+                        return alert('Please add a valid file!')
+                    }
+                    var fileReader = new FileReader()
+                    fileReader.addEventListener('load', () => {
+                      this.imageUrl = fileReader.result
+                    })
+                    fileReader.readAsDataURL(files[0])
+                    this.image = files[0]
+                    this.uploadImage()
+                },
+                uploadImage(){
+                    var self = this;
+                    axios.post('/api/image', {
+                        image: self.image,
+                        user: self.user.id
+                    })
+                    .then(response => {
+
+                    })
+                    .catch(e => {
+                        alert('Error!')
+                    })
+                },
+                changePassword() {
+                   var self = this
+                   if(self.newPassword === self.newPasswordConfirm){
+                       axios.post('/api/password', {
+                           password: self.password,
+                           user: self.user.id
+                       })
+                       .then(response => {
+                           self.changePasswords = false
+                           alert("Saved")
+                       }).catch(e => {
+                           alert('Error!')
+                           self.errors.push(e)
+                       })
+                   }
                 },
                 updateUser() {
                     var self = this;
                     var selectedProgrammingLanguages = self.programmingLanguages.filter(language => {
                         return language.checked
                     });
+                    selectedProgrammingLanguages.forEach(function(v){ delete v.checked });
                     var selectedSpeakingLanguages = self.speakingLanguages.filter(language => {
                         return language.checked
                     });
+                    selectedSpeakingLanguages.forEach(function(v){ delete v.checked });
                     axios.post(`/api/update/user`, {
                         firstname: self.user.first_name,
                         lastname: self.user.last_name,
                         email: self.user.email,
                         password: self.user.password,
                         programming_languages: selectedProgrammingLanguages,
-                        speaking_languages: selectedSpeakingLanguages
+                        speaking_languages: selectedSpeakingLanguages,
                     })
                     .then(response => {
-                        alert("Your changes have been updated and saved ");
                         self.editable = false;
+                        alert("Saved")
                     })
                     .catch(e => {
                         alert('Error!')

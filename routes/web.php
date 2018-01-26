@@ -22,8 +22,11 @@ Route::post('/api/register', 'UserController@addNewUser');
 Route::post('/api/update/user', 'UserController@updateUser');
 Route::get('/api/users', 'UserController@getAllUser');
 
+Route::post('/api/image', 'UserController@uploadImage');
+Route::post('/api/password', 'UserController@changePassword');
+
 Route::get('/login', 'UserController@showLoginForm');
-Route::post('/api/login', 'UserController@getUserAndLogin');
+Route::post('/api/login', 'UserController@doLogin');
 Route::get('logout', 'UserController@loggingOut');
 
 Route::get('/profile', 'ProfileController@showProfilePage')->name('profile');
@@ -38,3 +41,11 @@ Route::resource('groups', 'GroupController');
 Route::resource('conversations', 'ConversationController');
 
 Route::get('/backend', 'UserController@showBackend')->name('backend');
+
+Route::post('/api/message', 'MessageController@sendMessage');
+Route::get('/api/message', 'MessageController@getMessages');
+
+Route::get('/chat', 'ChatController@index');
+
+Route::get('/chats', 'ChatController@fetchChats');
+Route::post('/chats', 'ChatController@sendChat');

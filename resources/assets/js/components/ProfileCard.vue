@@ -51,12 +51,12 @@
                     </a>
                 </div>
                 <div class="cardBody">
-                    <div class="cardTitle"><h2 align="center">{{ user.username }}</h2></div>
+                    <div class="cardTitle"><h2 align="center">{{ person.username }}</h2></div>
                     <hr class="horisontal_line space_between">
                     <div class="cardLabel">
-                        <p v-if="user.programming_languages">Speaking: <span class="cardContent"><span v-for="prog in user.programming_languages">{{ prog.name }} </span></span></p>
+                        <p v-if="person.programming_languages">Speaking: <span class="cardContent"><span v-for="prog in person.programming_languages">{{ prog.name }} </span></span></p>
                         <p v-else>No Programming Language selected</p>
-                        <p v-if="user.speaking_languages">And also: <span class="cardContent"><span v-for="speaky in user.speaking_languages">{{ speaky.name }} </span></span></p>
+                        <p v-if="person.speaking_languages">And also: <span class="cardContent"><span v-for="speaky in person.speaking_languages">{{ speaky.name }} </span></span></p>
                         <p v-else>No Speaking Language selected</p>
                     </div>
                     <hr class="horisontal_line space_between" style="margin-bottom:5px">
@@ -68,30 +68,26 @@
                     <a href="#" class="fa fa-instagram"></a>
                     <a href="#" class="fa fa-snapchat-ghost"></a>
                     <div class="contactButtons">
-                    <template v-if="!me">
+                    <template v-if="person.id !== user.id">
                         <p>
-                            <input type="button" class="btn btn-default btn-sm" value="Chat Now"></input>
-                            <input type="button" class="btn btn-default btn-sm" value="Send Friend Request"></input>
+                            <input type="button" class="btn btn-default btn-sm" value="Send Message"></input>
                         </p>
                     </template>
                     </div>    
                 </div>
-            </div>
-
-
-
-
+        </div>
 </template>
 
 <script>
+
     export default {
         mounted() {
 
         },
-        props: ["user", "me"],
+        props: ["person","user"],
         data() {
             return{
-                showCard: false
+                showCard: false,
             }
         },
         methods: {

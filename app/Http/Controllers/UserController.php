@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Provider\Image;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -53,13 +54,27 @@ class UserController extends BaseController
 
     public function getUserType($type)
     {
-        if($type == 'mentors'){
-            $users = User::orderBy('id', 'desc')->where('is_a_mentor')->take(5)->get();
-        } else {
-            $users = User::orderBy('id', 'desc')->where('is_a_mentor', false)->take(5)->get();
-        }
 
+        if($type == 'mentors'){
+            $users = User::where('is_a_mentor', true)->orderBy('id', 'desc')->take(5)->get();
+        } else {
+            $users = User::where('is_a_mentor', false)->orderBy('id', 'desc')->take(5)->get();
+        }
         return response()->json($users);
+    }
+
+    public function uploadImage(Request $request)
+    {
+        dd($request->image);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $password = $request->password;
+        $user = User::where('id', $request->user)->first();
+        $user->password = Hash::make($password);
+        $user->save();
+        return response(200);
     }
 
     public function updateUser(Request $request)
@@ -74,8 +89,13 @@ class UserController extends BaseController
             $user->email = $request->email;
             $user->programming_languages = json_encode($request->programming_languages);
             $user->speaking_languages = json_encode($request->speaking_languages);
-            $user->password = Hash::make($request->password);
             $user->save();
+
+            if($request->image){
+                $imageData = $request->get('image');
+                $fileName = 'profilepicture' . rand(0, 1000);
+                Image::make($request->get('image'))->save(public_path('images/').$fileName);
+            }
         }
         return response(200);
 
@@ -84,8 +104,8 @@ class UserController extends BaseController
     public function doLogin(Request $request)
     {
               
-        $email=$request->email;
-        $password=$request->password;
+        $email= $request->email;
+        $password = $request->password;
         $user = User::where('email', '=', $email)->first();
         $this->loginUser($user);
         return response(200);

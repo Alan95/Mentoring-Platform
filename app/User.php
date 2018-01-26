@@ -28,5 +28,10 @@ class User extends Authenticatable
        'password', 'remember_token'
     ];
 
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
+    }
+
     
 }
